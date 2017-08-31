@@ -6,6 +6,7 @@ import HTMLView from 'react-native-htmlview';
 import axios from 'axios';
 import Topic from '../components/Topic';
 import Loading from '../components/Loading';
+import file from '../../data/cursos/artes_visuais.json';
 
 export default class Curso extends Component {
 	constructor(props) {
@@ -15,12 +16,17 @@ export default class Curso extends Component {
 	}
 
   componentWillMount() {
-    axios.get(`http://localhost:8081/data/cursos/${this.props.id}.json`)
+    this.setState({
+      contentPanels: file.contentPanels,
+      visible: false
+    });
+
+    /*axios.get(`http://localhost:8081/data/cursos/${this.props.id}.json`)
       .then(response => this.setState({
         contentPanels: response.data.contentPanels,
         visible: false
       }))
-      .catch(() => console.log('Erro ao recuperar os dados'));
+      .catch(() => console.log('Erro ao recuperar os dados'));*/
   }
 
 	setSection(section) {

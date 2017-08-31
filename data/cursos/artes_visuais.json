@@ -1,8 +1,11 @@
 {
-  "duracao": "4 anos",
   "contentPanels": [{
     "contentPanel": [{
       "content": "O profissional de Artes Visuais investiga processos de criação/produção sobre a arte, seu ensino e sua inserção na contemporaneidade por meio de experiências estéticas, sensoriais, emocionais e intelectuais, em espaços físicos diferenciados, e com estudos teóricos e práticos sobre pintura, desenho, cerâmica, escultura, fotografia, gravura, arte digital."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Licenciatura - Noturno (4 anos)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/artesvisuais\">furb.br/artesvisuais</a></b>"
     }]
   },{
     "contentPanel": [{

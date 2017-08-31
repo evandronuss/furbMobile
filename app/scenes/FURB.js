@@ -1,16 +1,36 @@
 import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
 import HTMLView from 'react-native-htmlview';
-
-const teste = '<p>A FURB reúne os três aspectos que definem uma Universidade: <b>ENSINO</b>, <b>PESQUISA E EXTENSÃO. O que isso quer dizer?</b></p>';
-const teste1 = '<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>';
-
+import axios from 'axios';
+import file from '../../data/furb.json';
 
 export default class FURB extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { sobre: '' };
+  }
+
+  componentWillMount() {
+    this.setState({ sobre: file.sobre });
+    /*axios.get('http://localhost:8081/data/furb.json')
+      .then(response => this.setState(response.data))
+      .catch(() => console.log('Erro ao recuperar os dados'));*/
+  }
+
 	render() {
 		return (
-			<HTMLView
-				value={teste1}
-			/>
+      <View style={styles.container}>
+        <HTMLView
+          value={`<p>${this.state.sobre}</p>`}
+        />
+      </View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 15
+  }
+});
