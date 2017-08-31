@@ -1,0 +1,20 @@
+react-native init nomeProjeto
+
+abrir android studio
+
+arquivo .eslintrc
+{
+    "extends": "rallycoding"
+}
+
+npm install --save-dev eslint-config-rallycoding
+npm uninstall babel-preset-react-native
+npm install babel-preset-react-native@2.1.0
+npm install --save react-native-router-flux
+npm i react-native-vector-icons --save && react-native link react-native-vector-icons
+npm i react-native-elements --save
+npm install --save react-native-collapsible
+npm install --save react-native-animatable
+npm install --save axios
+npm install --save react-native-loading-spinner-overlay
+npm install react-native-htmlview --save
