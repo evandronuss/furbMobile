@@ -39,7 +39,7 @@ export default class Topic extends Component {
 const styles = StyleSheet.create({
   topic: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row' d
   },
   containerIconSimpleTopic: {
     justifyContent: 'flex-start',
