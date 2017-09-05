@@ -1,0 +1,31 @@
+[{
+  "content": "<b>Se você é aluno novo - ou seja - saiu do Ensino Médio, é possível entrar por meio de:</b>"
+},{
+  "topics": [{
+    "content": "Vestibular;"
+  },{
+    "content": "Histórico Escolar;"
+  },{
+    "content": "ENEM;"
+  },{
+    "content": "Acesso FURB;"
+  },{
+    "content": "Aluno Especial."
+  }]
+},{
+  "content": "<br /><b>Se você já foi acadêmico:</b>"
+},{
+  "topics": [{
+    "content": "Reingresso;"
+  },{
+    "content": "Reingresso com transferência interna;"
+  },{
+    "content": "Diplomado;"
+  },{
+    "content": "Transferência interna;"
+  },{
+    "content": "Transferência externa."
+  }]
+},{
+  "content": "<br /><br /><b><a href=\"http://www.furb.br/comoingressar\">furb.br/comoingressar</a></b>"
+}]

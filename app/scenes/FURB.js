@@ -1,36 +1,63 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import HTMLView from 'react-native-htmlview';
 import axios from 'axios';
 import file from '../../data/furb.json';
+import Panels from '../components/Panels';
+import Loading from '../components/Loading';
 
 export default class FURB extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { sobre: '' };
+    this.state = {
+      content: '',
+      panels: [],
+      contentPanels: [],
+      visible: true
+    };
   }
 
   componentWillMount() {
-    this.setState({ sobre: file.sobre });
+    this.setState({
+      content: file.content,
+      panels: file.panels,
+      contentPanels: file.contentPanels,
+      visible: false
+    });
     /*axios.get('http://localhost:8081/data/furb.json')
-      .then(response => this.setState(response.data))
+      .then(response => this.setState({
+        content: response.data.content,
+        panels: response.data.panels,
+        contentPanels: response.data.contentPanels,
+        visible: false
+      }))
       .catch(() => console.log('Erro ao recuperar os dados'));*/
   }
 
 	render() {
 		return (
-      <View style={styles.container}>
-        <HTMLView
-          value={`<p>${this.state.sobre}</p>`}
+      <ScrollView style={styles.container}>
+        <Loading visible={this.state.visible} />
+        <View style={styles.containerText}>
+          <HTMLView
+            value={`<p>${this.state.content}</p>`}
+          />
+        </View>
+        <Panels
+          panels={this.state.panels}
+          contentPanels={this.state.contentPanels}
         />
-      </View>
+      </ScrollView>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  containerText: {
     padding: 15
   }
 });

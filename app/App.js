@@ -88,6 +88,7 @@ export default class App extends Component {
           navigationBarStyle={styles.navigationBarStyle}
           titleStyle={styles.titleStyle}
           headerTintColor='#FFF'
+          sceneStyle={{ backgroundColor: '#FFF' }}
         >
           <Scene key='root'>
             <Scene
@@ -125,7 +126,7 @@ export default class App extends Component {
             <Scene
               key='financiamento'
               component={Financiamento}
-              title='Financiamento'
+              title='Apoio Financeiro'
             />
             <Scene
               key='matricula'

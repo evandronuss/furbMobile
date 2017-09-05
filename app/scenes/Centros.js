@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 import ListaCard from '../components/ListaCard';
@@ -23,10 +23,10 @@ export default class Centros extends Component {
 
 	render() {
 		return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Loading visible={this.state.visible} />
         <ListaCard listaCards={this.state.listaCards} onPressDefault={Actions.cursos} />
-      </View>
+      </ScrollView>
 		);
 	}
 }

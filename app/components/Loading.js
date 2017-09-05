@@ -5,11 +5,11 @@ export default class Loading extends Component {
 	render() {
 		return (
 			<Spinner
-        visible={this.props.visible}
-        textContent={'Carregando...'}
-        textStyle={{ color: '#FFF', marginTop: -50 }}
-        overlayColor='rgba(0, 0, 0, 0.60)'
-        size='large'
+				visible={this.props.visible}
+				textContent={'Carregando...'}
+				textStyle={{ color: '#FFF', marginTop: -50 }}
+				overlayColor='rgba(0, 0, 0, 0.60)'
+				size='large'
 			/>
 		);
 	}

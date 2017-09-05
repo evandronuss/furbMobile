@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import ListaCard from '../components/ListaCard';
 
@@ -20,7 +21,7 @@ export default class Principal extends Component {
         icon: 'arrow-downward',
         onPress: Actions.ingresso
       }, {
-        text: 'Finaciamento',
+        text: 'Apoio Financeiro',
         icon: 'payment',
         onPress: Actions.financiamento
       }, {
@@ -33,7 +34,16 @@ export default class Principal extends Component {
 
   render() {
     return (
-      <ListaCard listaCards={this.state.listaCards} />
+			<ScrollView style={styles.container}>
+        <ListaCard listaCards={this.state.listaCards} />
+      </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});
+

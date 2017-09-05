@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import Card from '../components/Card';
+import { gerarNomeArquivo } from '../lib/Util';
 
 const cardSize = 150;
 
@@ -43,17 +44,6 @@ export default class ListaCard extends Component {
     });
   }
 
-  gerarId(texto) {
-    return texto.replace(/[áàâãª]/gi, 'a')
-                  .replace(/[éèêë]/gi, 'e')
-                  .replace(/[íìî]/gi, 'i')
-                  .replace(/[óòôõº]/gi, 'o')
-                  .replace(/[úùû]/gi, 'u')
-                  .replace(/[ç]/gi, 'ç')
-                  .replace(/ /g, '_')
-                  .toLowerCase();
-  }
-
   render() {
     return (
       <ScrollView style={styles.menu}>
@@ -70,7 +60,7 @@ export default class ListaCard extends Component {
                   (card.onPress || this.props.onPressDefault).bind(this, {
                     data: card.data,
                     panels: this.props.panels,
-                    id: this.gerarId(card.text)
+                    id: gerarNomeArquivo(card.text)
                   })
                 }
               />
@@ -84,7 +74,8 @@ export default class ListaCard extends Component {
 
 const styles = StyleSheet.create({
   menu: {
-    flex: 1
+    flex: 1,
+    marginBottom: 15
   },
   menuGrupo: {
     flexDirection: 'row',

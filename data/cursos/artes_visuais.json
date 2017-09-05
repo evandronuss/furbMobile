@@ -1,22 +1,20 @@
 {
-  "contentPanels": [{
-    "contentPanel": [{
+  "contentPanels": {
+    "curso": [{
       "content": "O profissional de Artes Visuais investiga processos de criação/produção sobre a arte, seu ensino e sua inserção na contemporaneidade por meio de experiências estéticas, sensoriais, emocionais e intelectuais, em espaços físicos diferenciados, e com estudos teóricos e práticos sobre pintura, desenho, cerâmica, escultura, fotografia, gravura, arte digital."
     },{
       "content": "<br /><b>Turno e duração:<br />Licenciatura - Noturno (4 anos)</b>"
     },{
       "content": "<b><a href=\"http://www.furb.br/artesvisuais\">furb.br/artesvisuais</a></b>"
-    }]
-  },{
-    "contentPanel": [{
+    }],
+    "diferenciais": [{
       "topics": [{
         "content": "Propicia vivência artístico/estética em espaço físico diferenciado, como por exemplo, as oficinas;"
       },{
         "content": "Oportuniza estudos teóricos e práticos, desenvolvidos ao longo do curso, que abrangem processos criativos em linguagens e mídias artísticas."
       }]
-    }]
-  },{
-    "contentPanel": [{
+    }],
+    "projetos": [{
       "content": "Disciplinas de Projeto de Pesquisa em Arte e TCC - Trabalho de Conclusão de Curso. Há a possibilidade de desenvolvimento de pesquisa mediante projetos encaminhados por meio de bolsas de IC, distribuídas por editais publicados pela Pró-Reitoria de Pesquisa, Pós-Graduação, Extensão e Cultura - PROPEX;"
     },{
       "content": "Vínculo com Programa Institucional Arte na Escola - PIAE, com os projetos Formação Continuada, Midiateca e o Jogo Teatral na Escola"
@@ -28,13 +26,11 @@
         "title": "Centro Acadêmico de Artes - CEARTE",
         "content": "Contempla os cursos de Artes Visuais, Música e Teatro."
       }]
-    }]
-  },{
-    "contentPanel": [{
+    }],
+    "atividades": [{
       "content": "Os estudantes de Artes Visuais podem participar de ações do Programa Institucional Arte na Escola, como oficinas e grupos de estudo."
-    }]
-  },{
-    "contentPanel": [{
+    }],
+    "locais": [{
       "topics": [{
         "content": "Instituições de Ensino Fundamental e Médio;"
       },{
@@ -42,6 +38,25 @@
       },{
         "content": "Gestor e mediador em galerias, museus e espaços culturais."
       }]
+    }],
+    "intercambio": [{
+      "iconTitle": "Alemanha"
+    },{
+      "iconTitle": "Argentina"
+    },{
+      "iconTitle": "Chile"
+    },{
+      "iconTitle": "Colômbia"
+    },{
+      "iconTitle": "Costa Rica"
+    },{
+      "iconTitle": "Equador"
+    },{
+      "iconTitle": "Espanha"
+    },{
+      "iconTitle": "México"
+    },{
+      "iconTitle": "Portugal"
     }]
-  }]
+  }
 }
