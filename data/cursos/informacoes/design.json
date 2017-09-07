@@ -1,5 +1,44 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "Oferece aulas práticas e teóricas que buscam aprimorar técnicas manuais como desenhos, ilustrações e marcenaria, bem como desenvolver conhecimentos digitais a partir da utilização de softwares gráficos e de modelagem tridimensional. Possibilita aos acadêmicos experimentar as múltiplas vertentes da profissão, abrangendo uma postura metodológica que integra aspectos do Design Gráfico e do Design de Produto."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Bacharelado - Noturno (4 anos)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/design\">furb.br/design</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "Incentivo à participação em concursos, valorizando e divulgando o trabalho dos alunos;"
+      },{
+        "content": "Oficina de Modelos e Protótipos, e LEG (Laboratório de Expressão Gráfica);"
+      },{
+        "content": "Laboratórios de informática equipados com softwares e uma impressora 3D;"
+      },{
+        "content": "Viagens de estudos e participação em eventos da área;"
+      },{
+        "content": "Convênios com empresas da região, que podem resultar em projetos de transferência de tecnologia e registro de novas patentes."
+      }]
+    }],
+    "projetos": [{
+      "topics": [{
+        "marker": "arrow",
+        "content": "<b>Centro Acadêmico de Design (CAD)</b>."
+      }]
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Departamentos de desenvolvimento de produtos;"
+      },{
+        "content": "Editoras;"
+      },{
+        "content": "Setor de estamparia têxtil;"
+      },{
+        "content": "Agências de comunicação e de design e nos mais diversos setores em que sejam necessárias habilidades para o desenvolvimento de projetos e de informação visual;"
+      },{
+        "content": "Carreira acadêmica."
+      }]
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{

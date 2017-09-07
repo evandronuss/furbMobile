@@ -1,5 +1,45 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "O profissional busca garantir a fabricação de itens de consumo em grande escala com rapidez e, principalmente, com um mínimo de impacto na natureza, de modo a aumentar a competitividade das empresas, além de torná-las \"ecologicamente corretas\". O Curso da FURB propicia ampla interação com outras áreas do conhecimento, com noções de contabilidade, economia, administração, gestão da qualidade, da tecnologia e do meio ambiente."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Bacharelado - Matutino ou Noturno (5 anos)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/engenhariadeprcducao\">furb.br/engenhariadeprcducao</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "Laboratórios e equipamentos adequados ao processo de ensino-aprendizagem;"
+      },{
+        "content": "Integração do aluno com o mercado de trabalho, desde os primeiros semestres;"
+      },{
+        "content": "Parcerias com universidades alemãs, visando ao intercâmbio de alunos e professores."
+      }]
+    }],
+    "projetos": [{
+      "topics": [{
+        "marker": "arrow",
+        "content": "<b>Centro Acadêmico: CAEP (Centro Acadêmico de Engenharia de Produção)</b>."
+      }]
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Empresas e entidades públicas, privadas e de prestação de serviços;"
+      },{
+        "content": "Prestação de assessoria técnica e consultoria industrial;"
+      },{
+        "content": "Realização de estudos de viabilidade técnica, econômica e ambiental;"
+      },{
+        "content": "Planejamento e gerência de produção e produto;"
+      },{
+        "content": "Avaliação através de perícias, vistorias, arbitramento e laudo técnico na área de produção industrial;"
+      },{
+        "content": "Engenharia de qualidade/Gestão ambiental."
+      }]
+    }],
+    "curiosidades": [{
+      "content": "Para entender um pouco mais sobre a abrangência da atuação de um engenheiro de produção, consulte a ABEPRO - Associação Brasileira de Engenhana de Produção - no site <b><a href=\"http://www.abepro.org.br\">abepro.org.br</a></b>."
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{

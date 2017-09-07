@@ -12,23 +12,20 @@ export default class Topic extends Component {
             key={`contentTopic_${index}`}
             style={styles.topic}
           >
-            {topic.title && <Icon
+            {topic.marker && topic.marker.toLowerCase() === 'arrow' && <Icon
               name='navigate-next'
               size={20}
               color='#757575'
               containerStyle={styles.containerIconSimpleTopic}
             />}
-            {!topic.title && <Icon
+            {(!topic.marker || topic.marker.toLowerCase() !== 'arrow') && <Icon
               name='lens'
               size={7}
               color='#757575'
               containerStyle={styles.containerIconTopic}
             />}
             <HTMLView
-              value={topic.title ?
-                `<p><b>${topic.title}:</b> ${topic.content}</p>` :
-                `<p>${topic.content}</p>`
-              }
+              value={`<p>${topic.content}</p>`}
             />
           </View>))}
       </View>

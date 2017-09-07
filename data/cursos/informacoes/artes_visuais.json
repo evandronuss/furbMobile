@@ -17,14 +17,14 @@
     "projetos": [{
       "content": "Disciplinas de Projeto de Pesquisa em Arte e TCC - Trabalho de Conclusão de Curso. Há a possibilidade de desenvolvimento de pesquisa mediante projetos encaminhados por meio de bolsas de IC, distribuídas por editais publicados pela Pró-Reitoria de Pesquisa, Pós-Graduação, Extensão e Cultura - PROPEX;"
     },{
-      "content": "Vínculo com Programa Institucional Arte na Escola - PIAE, com os projetos Formação Continuada, Midiateca e o Jogo Teatral na Escola"
+      "content": "Vínculo com Programa Institucional Arte na Escola - PIAE, com os projetos Formação Continuada, Midiateca e o Jogo Teatral na Escola.<br />"
     },{
       "topics": [{
-        "title": "Semana Acadêmica",
-        "content": "Em conjunto com outros cursos do Centro Acadêmico de Artes (CEARTE), desenvolve anualmente a Semana Acadêmica de Artes, com palestras, oficinas, exposições e apresentações para a difusão de ações artísticas e divulgação dos cursos do Departamento para a sociedade civil e comunidade acadêmica."
+        "marker": "arrow",
+        "content": "<b>Semana Acadêmica</b> - Em conjunto com outros cursos do Centro Acadêmico de Artes (CEARTE), desenvolve anualmente a Semana Acadêmica de Artes, com palestras, oficinas, exposições e apresentações para a difusão de ações artísticas e divulgação dos cursos do Departamento para a sociedade civil e comunidade acadêmica;"
       },{
-        "title": "Centro Acadêmico de Artes - CEARTE",
-        "content": "Contempla os cursos de Artes Visuais, Música e Teatro."
+        "marker": "arrow",
+        "content": "<b>Centro Acadêmico de Artes - CEARTE</b>: Contempla os cursos de Artes Visuais, Música e Teatro."
       }]
     }],
     "atividades": [{

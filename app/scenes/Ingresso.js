@@ -36,11 +36,10 @@ export default class Ingresso extends Component {
 		);
   }
 
-  renderTopicContent(topics, title, key) {
+  renderTopicContent(topics, key) {
 		return (
       <Topic
         key={key}
-        title={title}
         topics={topics}
       />
 		);
@@ -57,7 +56,7 @@ export default class Ingresso extends Component {
             const key = `content_${index}`;
 
             if (item.topics) {
-              return this.renderTopicContent(item.topics, item.title, key);
+              return this.renderTopicContent(item.topics, key);
             }
 
             return this.renderTextContent(item.content, key);

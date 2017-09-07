@@ -44,17 +44,16 @@ export default class Panels extends Component {
 		);
   }
 
-  renderTopicContent(topics, title, key) {
+  renderTopicContent(topics, key) {
 		return (
       <Topic
         key={key}
-        title={title}
         topics={topics}
       />
 		);
   }
   
-  renderIconTitle(iconTitle, key, align) {
+  renderIconTitle(iconTitle, key/*, align*/) {
     return (
       <IconTitle
         key={key}
@@ -74,17 +73,21 @@ export default class Panels extends Component {
 
     return (
 			<View
-				style={[styles.content, (section.align && section.align.toLowerCase() === 'row' ? styles.directionRow : undefined)]}
+				style={[styles.content, (
+          section.align && section.align.toLowerCase() === 'row' ?
+          styles.directionRow :
+          undefined
+        )]}
 			>
         {this.props.contentPanels[section.ref].map((item, index) => {
           const key = `contentPanel_${i}_${index}`;
 
           if (item.iconTitle) {
-            return this.renderIconTitle(item.iconTitle, key, section.align);
+            return this.renderIconTitle(item.iconTitle, key/*, section.align*/);
           }
 
           if (item.topics) {
-            return this.renderTopicContent(item.topics, item.title, key);
+            return this.renderTopicContent(item.topics, key);
           }
 
           return this.renderTextContent(item.content, key);
@@ -131,7 +134,7 @@ const styles = StyleSheet.create({
 		color: '#FFF'
   },
   content: {
-    padding: 20,
+    padding: 15,
 		backgroundColor: '#fff',
 		borderColor: '#007ED8',
 		borderLeftWidth: 1,

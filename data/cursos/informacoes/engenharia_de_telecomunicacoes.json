@@ -1,5 +1,51 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "O perfil dos acadêmicos deste curso passa por gostar de evoluções tecnológicas, inovações, e se interessar por tudo que permite a comunicação. O mercado está à procura desses profissionais, valorizando-os reiteradamente, seja pela inovação, criatividade, busca de soluções ou dinamismo. O curso da FURB prepara o aluno para atuar com segurança no mercado nacional e internacional."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Bacharelado - Matutino ou Noturno (5 anos e meio)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/telecomunicacoes\">furb.br/telecomunicacoes</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "Qualificação do corpo docente, composto por mestres e doutores;"
+      },{
+        "content": "Investimentos constantes em infraestrutura de laboratórios e salas de aulas, para desenvolvimento das práticas laboratoriais;"
+      },{
+        "content": "Intensa relação com empresas do setor;"
+      },{
+        "content": "Intercâmbio com universidades do exterior - Alemanha e Inglaterra;"
+      },{
+        "content": "Formação ampla, que permite a atuação em várias áreas de telecomunicações;"
+      },{
+        "content": "Mercado de trabalho dinâmico e amplo, valorizando o profissional inovador, atuante e empreendedor;"
+      }]
+    }],
+    "projetos": [{
+      "content": "Pesquisas com os alunos da graduação através do GEATEL - Grupo de Estudos Avançados em Telecomunicações.<br />"
+    },{
+      "topics": [{
+        "marker": "arrow",
+        "content": "<b>Semana Acadêmica Integrada de Engenharias de Telecomunicações e Elétrica</b>;"
+      },{
+        "marker": "arrow",
+        "content": "<b>Centro Acadêmico: CAET (Centro Acadêmico de Engenharia de Telecomunicações)</b>."
+      }]
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Projeto de sistemas irradiantes de rádio frequência, incluindo circuitos, transmissão e antenas;"
+      },{
+        "content": "Análise e projetos de redes de computadores/internet;"
+      },{
+        "content": "Projeto e supervisão de sistemas de energia para uso em sistemas de telecomunicações;"
+      },{
+        "content": "Empresas de Telecomunicações;"
+      },{
+        "content": "Orgãos governamentais."
+      }]
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{

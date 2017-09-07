@@ -1,5 +1,50 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "Engenheiro Eletricista é o profissional responsável por tudo relacionado com energia elétrica. Desde a execução e manutenção de sistemas de geração, transmissão e distribuição de energia elétrica até o desenvolvimento de equipamentos elétricos e eletrônicos ou de sistemas de automação, de acionamentos e de comunicação."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Bacharelado - Matutino ou Noturno (5 anos e meio)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/engenhariaeletrica\">furb.br/engenhariaeletrica</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "Maioria dos professores Doutores e Tempo Integral. Dos 16 professores do quadro, 15 são TI, 13 são Doutores e 3 são Mestres;"
+      },{
+        "content": "Oportunidades de intercâmbio acadêmico no exterior, como nas Universidades do Porto (Portugal), Offenburg (Alemanha) e Boras (Suécia);"
+      },{
+        "content": "Oportunidade de participação em projetos de pesquisa;"
+      },{
+        "content": "Oferecido nos períodos matutino ou noturno;"
+      },{
+        "content": "Contato com empresas do setor elétrico de grande porte na região, para estágios;"
+      },{
+        "content": "Muitos dos formados já saem da Universidade empregados."
+      }]
+    }],
+    "projetos": [{
+      "content": "Projetos desenvolvidos pelos grupos de pesquisa do DEET (Grupo de Pesquisa em Energia e Telecomunicações - GPETEL e Grupo de Processamento Eletrônico de Energia - GPEE). Atuam como bolsistas nos projetos de P&D da ANEEL, através da execução de pesquisas com fomento externo, financiadas por concessionárias de energia elétrica do país. Também atuam nos programas de Iniciação Científica da instituição. Atualmente, seis acadêmicos do Curso são bolsistas de IC pelo programa PIBIC/FURB 2016/17.<br />"
+    },{
+      "topics": [{
+        "marker": "arrow",
+        "content": "<b>A Semana Acadêmica</b> é promovida pelo Centro Acadêmico e conta com a colaboração do Colegiado do Curso e do DEET. Acontece uma vez ao ano, tradicionalmente no segundo semestre, com atividades como palestras, seminários, grupo de discussão"
+      },{
+        "marker": "arrow",
+        "content": "<b>Centro Acadêmico Livre de Engenharia Elétrica - CALEE</b>."
+      }]
+    }],
+    "atividades": [{
+      "content": "Em horários extraclasse (período vespertino), a grande maioria dos onze laboratórios do curso fica à disposição dos acadêmicos, sob a supervisão de um funcionário de laboratório (servidor técnico-administrativo)."
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Empresas e indústrias que fabricam ou usam equipamentos elétricos e sistemas de automação;"
+      },{
+        "content": "Concessionárias e órgãos reguladores do setor energético;"
+      },{
+        "content": "Podem se tornar donos do seu próprio negócio, atuando na área de instalações elétricas e na oferta de serviços técnicos especializados."
+      }]
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{

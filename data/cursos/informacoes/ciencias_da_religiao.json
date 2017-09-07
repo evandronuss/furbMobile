@@ -1,5 +1,37 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "Tem como foco desenvolver atividades de ensino, pesquisa e extensão que possibilitem uma compreensão crítica dos fenômenos religiosos, incluindo perspectivas não religiosas, contribuindo para uma sociedade que reconheça a dignidade de todas as formas e expressões de vida. Pioneiro no Brasil, o curso habilita profissionais para o exercício docente em Ensino Religioso na Educação Básica."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Licenciatura - Noturno (4 anos)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/cienciasdareligiao\">furb.br/cienciasdareligiao</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "Desenvolve ensino, pesquisa e extensão nas áreas de ensino religioso - não confessional, interculturalidade, diversidade religiosa, direitos humanos e da terra;"
+      },{
+        "content": "Integra o Núcleo de Estudos sobre Religiosidades e Interculturalidade - NERI;"
+      },{
+        "content": "Realiza mensalmente o \"Círculo de Diálogos - Diversidades e Educação\";"
+      },{
+        "content": "Através do Grupo de Pesquisa Ethos, Alteridade e Desenvolvimento do Programa de Pós-Graduação em Desenvolvimento Regional da FURB, o curso integra o Comitê Nacional de Respeito à Diversidade Religiosa;"
+      },{
+        "content": "Mantém parceria com Universidades de vários países, incentivando intercâmbios."
+      }]
+    }],
+    "projetos": [{
+      "content": "Professores e estudantes integram e participam ativamente de diferentes fóruns, grupos de estudo e de pesquisa, associações, movimentos nacionais e internacionais."
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Professor de Ensino Religioso na Educação Básica;"
+      },{
+        "content": "Assessorias e serviços em empresas e instituições governamentais, não-governamentais, religiosas e educacionais;"
+      },{
+        "content": "Mercado de editoras, na produção de revistas e livros voltados para as religiões."
+      }]
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{

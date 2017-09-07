@@ -1,5 +1,56 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "Oferece habilitação para atuação profissional como arquitetos e urbanistas. O profissional desta área está preparado para atuar no mercado de projetos arquitetônicos e urbanísticos, planejamento urbano, paisagismo, gerenciamento de construções civis, transportes e mobilidade urbana."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Bacharelado - Matutino (5 anos)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/arquiteturaeurbanismo\">furb.br/arquiteturaeurbanismo</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "Segundo curso mais antigo nesta área em Santa Catarina (1992);"
+      },{
+        "content": "Ênfase na formação crítica do aluno;"
+      },{
+        "content": "Eixo articulador de formação do acadêmico (disciplina: Ateliê de Projeto Integrado);"
+      },{
+        "content": "Com professores experientes e atuantes no mercado, atua de forma a estimular a visão interdisciplinar do aluno;"
+      },{
+        "content": "Aplicação prática de seus conhecimentos na transformação dos espaços das cidades;"
+      },{
+        "content": "Visitas técnicas e viagens de estudos para cidades históricas são organizadas frequentemente."
+      }]
+    }],
+    "projetos": [{
+      "content": "Os acadêmicos do Curso de Arquitetura e Urbanismo têm oportunidade de participar de pesquisas de iniciação científica com professores doutores que participam de Grupos de Pesquisas certificados pelo CNPq e também em projetos de extensão que são desenvolvidos junto à comunidade externa.<br />"
+    },{
+      "topics": [{
+        "marker": "arrow",
+        "content": "<b>A Semana de Estudos Acadêmicos</b> - acontece anualmente, sempre no segundo semestre, e envolve atividades de integração acadêmica, palestras técnicas e oficinas de trabalho, sempre com a presença de profissionais de renome no cenário da arquitetura nacional;"
+      },{
+        "marker": "arrow",
+        "content": "<b>CENARQ - Centro Acadêmico de Arquitetura</b>. É responsável pela organização da Semana Acadêmica. Organiza também diversas atividades culturais e de confraternização. O CENARQ participa ativamente do Colegiado do Curso e da organização do Ateliê Vertical."
+      }]
+    }],
+    "atividades": [{
+      "content": "Livre acesso a diversos programas para elaboração de projetos pelo sistema CAD, e onde o acadêmico pode imprimir seus trabalhos a um preço bastante acessível."
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Escritórios de projetos;"
+      },{
+        "content": "Orgãos públicos;"
+      },{
+        "content": "Assessoria;"
+      },{
+        "content": "Consultoria;"
+      },{
+        "content": "Construtoras;"
+      },{
+        "content": "E como profissional liberal."
+      }]
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{

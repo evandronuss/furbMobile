@@ -1,5 +1,66 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "Prepara engenheiros com uma visão geral da atividade, prontos para atuar em qualquer uma das várias áreas de conhecimento da Engenharia Civil. No campo profissional, a construção civil é o maior mercado de atuação, tanto em âmbito regional quanto nacional, ocupando uma importante fatia do Produto Interno Bruto - PIB, e sendo um dos maiores setores da economia no país."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Bacharelado - Matutino ou Vespertino (5 anos)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/engenhariacivil\">furb.br/engenhariacivil</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "A equipe de professores, constituída por mestres, doutores e pós-doutores, possui alta capacitação e experiência prática comprovada;"
+      },{
+        "content": "Dispõe de uma excelente estrutura, composta por laboratórios e equipamentos."
+      }]
+    }],
+    "projetos": [{
+      "topics": [{
+        "marker": "arrow",
+        "content": "<b>Centro Acadêmico: CAEC</b> (Centro Acadêmico de Engenharia Civil)."
+      }]
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Projetos arquitetônicos de edificações - residenciais, industriais, comerciais;"
+      },{
+        "content": "Projetos estruturais - residenciais, industriais, comerciais;"
+      },{
+        "content": "Projetos hidrossanitários e preventivos de incêndio em edificações;"
+      },{
+        "content": "Projetos de drenagem urbana e de rede de distribuição de água;"
+      },{
+        "content": "Projetos hidráulicos - barragens, canais e sistemas de elevação - dimensionamento de bombas;"
+      },{
+        "content": "Projetos hidrológicos - bacias hidrográficas - águas superficiais e subterrâneas;"
+      },{
+        "content": "Projetos de redes de coleta de esgotos e de tratamento de efluentes;"
+      },{
+        "content": "Projetos viários - estradas, rodovias;"
+      },{
+        "content": "Projetos de obras de artes - pontes, viadutos, túneis, barragens;"
+      },{
+        "content": "Projetos topográficos;"
+      },{
+        "content": "Projetos de terraplanagens;"
+      },{
+        "content": "Fiscalização de obra ou serviço técnico;"
+      },{
+        "content": "Ensino, pesquisa, análise, experimentação, ensaio, divulgação técnica e extensão;"
+      },{
+        "content": "Estudo de viabilidade técnico-econômica;"
+      },{
+        "content": "Padronização, mensuração e controle de qualidade;"
+      },{
+        "content": "Assistência, assessoria, consultoria e auditoria técnica;"
+      },{
+        "content": "Gestão, supervisão, coordenação e orientação técnica;"
+      },{
+        "content": "Vistoria, perícia, avaliação, laudo e parecer técnico;"
+      },{
+        "content": "Direção de obra."
+      }]
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{

@@ -1,5 +1,50 @@
 {
   "contentPanels": {
+    "curso": [{
+      "content": "Esta área ocupa-se de propor a utilização dos recursos naturais de forma ordenada e sustentável, bem como cuidar da conservação da natureza e da biodiversidade. É um profissional que trabalha tanto em áreas naturais e rurais, quanto urbanas. Preocupa-se com o ser humano e com a natureza, pois busca fornecer recursos para as atividades humanas ao mesmo tempo em que procura conservar esses recursos para as futuras gerações."
+    },{
+      "content": "<br /><b>Turno e duração:<br />Bacharelado - Matutino ou Noturno (5 anos)</b>"
+    },{
+      "content": "<b><a href=\"http://www.furb.br/engenhariaflorestal\">furb.br/engenhariaflorestal</a></b>"
+    }],
+    "diferenciais": [{
+      "topics": [{
+        "content": "Ocorre em ambiente adequado, com laboratórios de alta qualidade;"
+      },{
+        "content": "Professores com formação adequada;"
+      },{
+        "content": "Programa de viagens de estudo para que, a cada fase, o aluno conheça a realidade da profissão de forma teórica e prática;"
+      },{
+        "content": "Programa de estágios em instituições e empresas de qualidade reconhecida."
+      }]
+    }],
+    "projetos": [{
+      "content": "Inventário Florístico Florestal de Santa Catarina que serviu de base para artigos publicados em revistas científicas, alcançando o reconhecimento de prestigiosas instituições de pesquisa da Inglaterra, Estados Unidos, Alemanha e Canadá.<br />"
+    },{
+      "topics": [{
+        "marker": "arrow",
+        "content": "<b>Semana Acadêmica da Engenharia Florestal</b> - acontece anualmente, em setembro, quando, durante alguns dias, as atividades se voltam para palestras, minicursos, eventos, treinamentos como forma de diversificar a forma de aprender e compartilhar conhecimento internamente e externamente com a comunidade;"
+      },{
+        "marker": "arrow",
+        "content": "<b>O Centro Acadêmico da Engenharia Florestal</b> reúne os acadêmicos do curso para congregar, organizar, e participar de todas as atividades do curso. E um centro com papel ativo nas ações de ensino"
+      }]
+    }],
+    "atividades": [{
+      "content": "Grupos de pesquisa que se organizam em torno dos projetos."
+    }],
+    "locais": [{
+      "topics": [{
+        "content": "Instituições privadas;"
+      },{
+        "content": "Empresas do ramo de produção de papel e madeira e placas;"
+      },{
+        "content": "Empresas de produtos florestais diversos;"
+      },{
+        "content": "Empresas de consultoria e prestação de serviços;"
+      },{
+        "content": "Instituições públicas de gestão e meio ambiente."
+      }]
+    }],
     "intercambio": [{
       "iconTitle":"Alemanha"
     },{
