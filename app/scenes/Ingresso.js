@@ -4,7 +4,7 @@ import axios from 'axios';
 import HTMLView from 'react-native-htmlview';
 import Topic from '../components/Topic';
 import Loading from '../components/Loading';
-import file from '../../data/ingresso.json';
+//import file from '../../data/ingresso.json';
 
 export default class Ingresso extends Component {
 	constructor(props) {
@@ -14,17 +14,17 @@ export default class Ingresso extends Component {
 	}
 
   componentWillMount() {
-    this.setState({
+    /*this.setState({
       data: file,
       visible: false
-    });
+    });*/
 
-    /*axios.get('http://localhost:8081/data/ingresso.json')
+    axios.get('http://localhost:8081/data/ingresso.json')
       .then(response => this.setState({
         data: response.data,
         visible: false
       }))
-      .catch(() => console.log('Erro ao recuperar os dados'));*/
+      .catch(() => console.log('Erro ao recuperar os dados'));
   }
 
   renderTextContent(content, key) {

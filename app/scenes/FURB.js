@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import HTMLView from 'react-native-htmlview';
 import axios from 'axios';
-import file from '../../data/furb.json';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
+//import file from '../../data/furb.json';
 
 export default class FURB extends Component {
   constructor(props) {
@@ -19,20 +19,20 @@ export default class FURB extends Component {
   }
 
   componentWillMount() {
-    this.setState({
+    /*this.setState({
       content: file.content,
       panels: file.panels,
       contentPanels: file.contentPanels,
       visible: false
-    });
-    /*axios.get('http://localhost:8081/data/furb.json')
+    });*/
+    axios.get('http://localhost:8081/data/furb.json')
       .then(response => this.setState({
         content: response.data.content,
         panels: response.data.panels,
         contentPanels: response.data.contentPanels,
         visible: false
       }))
-      .catch(() => console.log('Erro ao recuperar os dados'));*/
+      .catch(() => console.log('Erro ao recuperar os dados'));
   }
 
 	render() {

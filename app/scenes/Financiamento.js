@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import file from '../../data/financiamento.json';
+//import file from '../../data/financiamento.json';
 
 export default class Financiamento extends Component {
 	constructor(props) {
@@ -13,19 +13,19 @@ export default class Financiamento extends Component {
 	}
 
   componentWillMount() {
-    this.setState({
+    /*this.setState({
       panels: file.panels,
       contentPanels: file.contentPanels,
       visible: false
-    });
+    });*/
 
-    /*axios.get('http://localhost:8081/data/financiamento.json')
+    axios.get('http://localhost:8081/data/financiamento.json')
       .then(response => this.setState({
         panels: response.data.panels,
         contentPanels: response.data.contentPanels,
         visible: false
       }))
-      .catch(() => console.log('Erro ao recuperar os dados'));*/
+      .catch(() => console.log('Erro ao recuperar os dados'));
   }
 
 	render() {

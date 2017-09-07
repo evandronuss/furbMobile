@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
 import ListaCard from '../components/ListaCard';
+import Loading from '../components/Loading';
 
 export default class Cursos extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { listaCards: [], visible: true };
+	}
+
+  componentWillMount() {
+    //this.setState({ listaCards: file, visible: false });
+
+    axios.get(`http://localhost:8081/data/cursos/${this.props.id}.json`)
+      .then(response => this.setState({
+        listaCards: response.data,
+        visible: false
+      }))
+      .catch(() => console.log('Erro ao recuperar os dados'));
+  }
+
 	render() {
 		return (
       <ScrollView style={styles.container}>
+        <Loading visible={this.state.visible} />
         <ListaCard
-          listaCards={this.props.data.listaCards}
-          panels={this.props.data.panels}
+          listaCards={this.state.listaCards}
           onPressDefault={Actions.curso}
         />
       </ScrollView>

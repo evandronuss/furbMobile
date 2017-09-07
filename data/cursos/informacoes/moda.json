@@ -1,0 +1,13 @@
+{
+  "contentPanels": {
+    "intercambio": [{
+      "iconTitle":"Chile"
+    },{
+      "iconTitle":"Equador"
+    },{
+      "iconTitle":"Portugal"
+    },{
+      "iconTitle":"Suécia"
+    }]
+  }
+}

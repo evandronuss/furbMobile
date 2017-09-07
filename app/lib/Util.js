@@ -117,6 +117,7 @@ const removerAcentos = (texto) => texto.replace(/[áàâãª]/gi, 'a')
 
 const gerarNomeArquivo = (texto) => removerAcentos(texto)
                                       .replace(/ /g, '_')
+                                      .replace(/([^a-z0-9_])/gi, '')
                                       .toLowerCase();
 
 const buscarImagemPais = (pais) => {

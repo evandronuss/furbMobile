@@ -21,7 +21,7 @@ export default class ItemMenu extends Component {
         activeOpacity={1}
         underlayColor='#FFF'
       >
-        <View style={styles.itemMenu}>
+        <View style={[styles.itemMenu, this.props.styles]}>
           <Image
             source={buscarImagemPais(this.props.iconTitle)}
           />

@@ -1,13 +1,16 @@
 {
   "panels": [{
+    "ref": "fies",
+    "title": "FIES"
+  },{
     "ref": "bolsas_estudo",
     "title": "Bolsas de Estudo"
   },{
     "ref": "bolsas_pesquisa",
     "title": "Bolsas de Pesquisa"
   },{
-    "ref": "financiamento",
-    "title": "Programas de Financiamento"
+    "ref": "creduc",
+    "title": "CREDUC"
   },{
     "ref": "fidelidade",
     "title": "Desconto fidelidade FURB"
@@ -37,6 +40,9 @@
     "title": "PARFOR"
   }],
   "contentPanels": {
+    "fies": [{
+      "content": "<b>FIES - Fundo de Financiamento ao Estudante do Ensino Superior:</b> Programa de financiamento do governo federal para custear cursos de Graduação onde o percentual de financiamento pode variar até próximo a 100% do valor da mensalidade, conforme avaliação do MEC. A devolução do valor financiado ocorre 18 meses após a conclusão do curso. Os juros hoje estão em 6,5% ao ano e o aluno paga uma taxa trimestral de R$ 150,00 a títulos de amortização de juros, após a assinatura do contrato no agente financeiro (banco). Para fazer a inscrição no FIES, obrigatoriamente o aluno tem que ter feito o ENEM, e tido no mínimo 450 pontos e não ter zerado a nota da redação."
+    }],
     "bolsas_estudo": [{
       "content": "As bolsas de estudo são recursos públicos destinados ao custeio das mensalidades dos acadêmicos de Graduação economicamente carentes, parcial ou integralmente, dependendo do programa vigente de bolsas. Para concorrer a esses benefícios, é necessário que o aluno se inscreva a cada semestre no cadastro socioeconômico."
     },{
@@ -67,14 +73,8 @@
         "content": "Atividade de pesquisa voluntária"
       }]
     }],
-    "financiamento": [{
-      "topics": [{
-        "title": "FIES - Fundo de Financiamento ao Estudante do Ensino Superior",
-        "content": "Programa de financiamento do governo federal para custear cursos de Graduação onde o percentual de financiamento pode variar até próximo a 100% do valor da mensalidade, conforme avaliação do MEC. A devolução do valor financiado ocorre 18 meses após a conclusão do curso. Os juros hoje estão em 6,5% ao ano e o aluno paga uma taxa trimestral de R$ 150,00 a títulos de amortização de juros, após a assinatura do contrato no agente financeiro (banco). Para fazer a inscrição no FIES, obrigatoriamente o aluno tem que ter feito o ENEM, e tido no mínimo 450 pontos e não ter zerado a nota da redação."
-      },{
-        "title": "CREDUC - Crédito Educativo Municipal",
-        "content": "Programa de financiamento do Município de Blumenau para custear cursos de Graduação, onde o percentual pode variar entre 50% a 70% da mensalidade. A devolução do valor financiado ocorre 06 meses após a conclusão do curso. Os juros hoje estão em 6% ao ano. As inscrições ocorrem semestralmente."
-      }]
+    "creduc": [{
+      "content": "<b>CREDUC - Crédito Educativo Municipal:</b> Programa de financiamento do Município de Blumenau para custear cursos de Graduação, onde o percentual pode variar entre 50% a 70% da mensalidade. A devolução do valor financiado ocorre 06 meses após a conclusão do curso. Os juros hoje estão em 6% ao ano. As inscrições ocorrem semestralmente."
     }],
     "fidelidade": [{
       "content": "São concedidos descontos nos casos onde duas ou mais pessoas do mesmo grupo familiar frequentam cursos de Graduação, Ensino Médio ou Pós-Graduação simultaneamente. Há também bônus para ex-alunos da ETEVI que concluíram o ensino médio na instituição e que podem ser utilizados quando forem se matricular nos cursos de Graduação da FURB. Há um prazo máximo para pedir esse bônus."

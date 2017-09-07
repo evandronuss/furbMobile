@@ -1,0 +1,37 @@
+{
+  "contentPanels": {
+    "intercambio": [{
+      "iconTitle":"Alemanha"
+    },{
+      "iconTitle":"Argentina"
+    },{
+      "iconTitle":"Áustria"
+    },{
+      "iconTitle":"Chile"
+    },{
+      "iconTitle":"Colômbia"
+    },{
+      "iconTitle":"Costa Rica"
+    },{
+      "iconTitle":"Dinamarca"
+    },{
+      "iconTitle":"Equador"
+    },{
+      "iconTitle":"Espanha"
+    },{
+      "iconTitle":"França"
+    },{
+      "iconTitle":"Holanda"
+    },{
+      "iconTitle":"Itália"
+    },{
+      "iconTitle":"México"
+    },{
+      "iconTitle":"Paraguai"
+    },{
+      "iconTitle":"Portugal"
+    },{
+      "iconTitle":"Suécia"
+    }]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "contentPanels": {
+    "intercambio": [{
+      "iconTitle":"Alemanha"
+    },{
+      "iconTitle":"Argentina"
+    },{
+      "iconTitle":"Chile"
+    },{
+      "iconTitle":"Colômbia"
+    },{
+      "iconTitle":"Costa Rica"
+    },{
+      "iconTitle":"Espanha"
+    },{
+      "iconTitle":"Portugal"
+    }]
+  }
+}

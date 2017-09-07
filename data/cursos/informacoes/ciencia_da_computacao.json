@@ -1,0 +1,27 @@
+{
+  "contentPanels": {
+    "intercambio": [{
+      "iconTitle":"Alemanha"
+    },{
+      "iconTitle":"Argentina"
+    },{
+      "iconTitle":"Áustria"
+    },{
+      "iconTitle":"Chile"
+    },{
+      "iconTitle":"China"
+    },{
+      "iconTitle":"Costa Rica"
+    },{
+      "iconTitle":"Dinamarca"
+    },{
+      "iconTitle":"Espanha"
+    },{
+      "iconTitle":"Paraguai"
+    },{
+      "iconTitle":"Portugal"
+    },{
+      "iconTitle":"Suécia"
+    }]
+  }
+}

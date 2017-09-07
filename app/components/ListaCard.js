@@ -58,8 +58,6 @@ export default class ListaCard extends Component {
                 text={card.text}
                 onPress={
                   (card.onPress || this.props.onPressDefault).bind(this, {
-                    data: card.data,
-                    panels: this.props.panels,
                     id: gerarNomeArquivo(card.text)
                   })
                 }
