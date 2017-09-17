@@ -17,7 +17,7 @@ export default class Menu extends Component {
             source={LogoFurb}
           />
         </View>
-        <View style={{ backgroundColor: '#FFCC00', height: 5 }} />
+        <View style={{ backgroundColor: '#FFCC00', height: 3 }} />
         <View style={styles.itensMenu}>
           <ItemMenu app={this.props.app} icon='location-on' text='Teste' />
           <ItemMenu icon='exit-to-app' text='Sair' />

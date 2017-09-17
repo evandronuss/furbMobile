@@ -18,7 +18,10 @@ export default class Panels extends Component {
   
   filterPanels(panels) {
     return panels.filter((panel) => this.props.contentPanels &&
-                                    this.props.contentPanels[panel.ref]);
+                                    (
+                                      this.props.contentPanels[panel.ref] ||
+                                      !panel.ref
+                                    ));
   }
 
 	renderHeader(section) {
@@ -63,10 +66,41 @@ export default class Panels extends Component {
     );
   }
 
+  renderHorarios(horarios, key) {
+    return (
+      <View key={key}>
+        <Text />
+        <Text
+          style={{ fontWeight: 'bold' }}
+        >
+          Horários:
+        </Text>
+        {horarios.map((item, index) => (
+          <View
+            key={`contentHorarios_${index}`}
+            style={{ flexDirection: 'row' }}
+          >
+            <Text>
+              {item.horario}
+            </Text>
+            {item.esgotado && <Text
+              style={{ fontWeight: 'bold', color: 'red' }}
+            >
+              {' (Esgotado)'}
+            </Text>}
+          </View>
+        ))}
+      </View>
+    );
+  }
+
   renderContentPanel(section, i) {
     if (
       !this.props.contentPanels ||
-      !this.props.contentPanels[section.ref]
+      (
+        !this.props.contentPanels[section.ref] &&
+        !this.props.contentPanels[i].contentPanel
+      )
     ) {
       return;
     }
@@ -79,8 +113,15 @@ export default class Panels extends Component {
           undefined
         )]}
 			>
-        {this.props.contentPanels[section.ref].map((item, index) => {
+        {(
+          this.props.contentPanels[section.ref] ||
+          this.props.contentPanels[i].contentPanel
+        ).map((item, index) => {
           const key = `contentPanel_${i}_${index}`;
+
+          if (item.horarios) {
+            return this.renderHorarios(item.horarios, key);
+          }
 
           if (item.iconTitle) {
             return this.renderIconTitle(item.iconTitle, key/*, section.align*/);

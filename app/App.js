@@ -16,6 +16,9 @@ import Curso from './scenes/Curso';
 import Ingresso from './scenes/Ingresso';
 import Financiamento from './scenes/Financiamento';
 import Matricula from './scenes/Matricula';
+import Interacao from './scenes/Interacao';
+import Programacao from './scenes/Programacao';
+import ProgramacaoCurso from './scenes/ProgramacaoCurso';
 
 export default class App extends Component {
   constructor(props) {
@@ -76,7 +79,7 @@ export default class App extends Component {
   render() {
     return (
       <DrawerLayoutAndroid
-        drawerWidth={300}
+        drawerWidth={260}
         ref={(drawerElement) => { this.drawer = drawerElement; }}
         drawerPosition={DrawerLayoutAndroid.positions.left}
         onDrawerOpen={this.setDrawerState}
@@ -132,6 +135,21 @@ export default class App extends Component {
               key='matricula'
               component={Matricula}
               title='Matrícula'
+            />
+            <Scene
+              key='interacao'
+              component={Interacao}
+              title='Interação'
+            />
+            <Scene
+              key='programacao'
+              component={Programacao}
+              title='Programação'
+            />
+            <Scene
+              key='programacaocurso'
+              component={ProgramacaoCurso}
+              title='Programação'
             />
           </Scene>
         </Router>

@@ -1,0 +1,42 @@
+{
+  "content": "No <b>Interação FURB</b> você tem a oportunidade de conhecer a estrutura da <b>Universidade de Blumenau</b> e, também, de participar das oficinas organizadas pelos cursos de graduação, intercâmbio, cursos de curta duração e muito mais.<br /><br />Através das atividades práticas desenvolvidas, é possível vivenciar o que a Universidade, o curso de interesse e a futura profissão podem oferecer. Além de conversar e tirar dúvidas com professores e acadêmicos das mais diversas áreas de atuação.",
+  "programacao": {
+    "title": "Programação de 2017",
+    "warning": "Programação sujeita a alterações até o início das inscrições."
+  },
+  "panels": [{
+    "ref": "partifipar",
+    "title": "Como participar"
+  },{
+    "ref": "evento",
+    "title": "O evento"
+  }],
+  "contentPanels": {
+    "partifipar": [{
+      "content": "Alguns requisitos são necessários:"
+    },{
+      "topics": [{
+        "content": "ser estudante do 1º, 2º e 3º ano do ensino médio ou comunidade em geral;"
+      },{
+        "content": "fazer a inscrição on-line nas oficinas e palestras de interesse;"
+      },{
+        "content": "imprimir comprovante de inscrição e apresentar no dia do evento;"
+      },{
+        "content": "comparecer no câmpus 1 da FURB no dia do evento."
+      }]
+    }],
+    "evento": [{
+      "content": "O <b>Interação FURB</b> será realizado:"
+    },{
+      "topics": [{
+        "content": "dia <b>27 de setembro de 2017</b>;"
+      },{
+        "content": "das 8h às 22h;"
+      },{
+        "content": "local de encontro: tenda do câmpus 1 da FURB;"
+      },{
+        "content": "evento gratuito."
+      }]
+    }]
+  }
+}

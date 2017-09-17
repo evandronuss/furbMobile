@@ -28,6 +28,11 @@ export default class Principal extends Component {
         text: 'Matrícula',
         icon: 'edit',
         onPress: Actions.matricula
+      }, {
+        text: 'Interação',
+        type: 'ionicon',
+        icon: 'ios-hand',
+        onPress: Actions.interacao
       }]
     };
   }
@@ -46,4 +51,3 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-

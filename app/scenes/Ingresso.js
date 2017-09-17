@@ -4,7 +4,6 @@ import axios from 'axios';
 import HTMLView from 'react-native-htmlview';
 import Topic from '../components/Topic';
 import Loading from '../components/Loading';
-//import file from '../../data/ingresso.json';
 
 export default class Ingresso extends Component {
 	constructor(props) {
@@ -14,11 +13,6 @@ export default class Ingresso extends Component {
 	}
 
   componentWillMount() {
-    /*this.setState({
-      data: file,
-      visible: false
-    });*/
-
     axios.get('http://localhost:8081/data/ingresso.json')
       .then(response => this.setState({
         data: response.data,
@@ -72,7 +66,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   content: {
-    padding: 20,
-		backgroundColor: '#fff'
+    padding: 20
   }
 });

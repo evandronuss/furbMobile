@@ -1,0 +1,20 @@
+{
+  "panels": [{
+    "ref": "administracao_empreendedorismo",
+    "title": "Administração e Empreendedorismo para o sucesso"
+  }],
+  "contentPanels": {
+    "administracao_empreendedorismo": [{
+      "content": "Apresentar a profissão da Administração e sua integração com o Empreendedorismo como fontes de desenvolvimento da sociedade e geradoras de sucesso profissional.<br />"
+    },{
+      "horarios": [{
+          "horario": "10h30 às 11h30",
+          "esgotado": true
+        },{
+          "horario": "13h30 às 14h30",
+          "esgotado": true
+        }
+      ]
+    }]
+  }
+}
