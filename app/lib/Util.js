@@ -151,7 +151,15 @@ const removerObjetosDuplicados = (array, atributo) => {
 };
 
 const ordenarObjetos = (array, atributo) =>
-  array.sort((a, b) => a[atributo] < b[atributo] ? -1 : a[atributo] > b[atributo] ? 1 : 0);
+  array.sort((a, b) => {
+    if (a[atributo] < b[atributo]) {
+      return -1;
+    } else if (a[atributo] > b[atributo]) {
+      return 1;
+    }
+
+    return 0;
+  });
 
 export {
     removerAcentos,

@@ -23,13 +23,13 @@ export default class Cursos extends Component {
   }
 
   filtrarDadosExibir(data) {
-    let retorno = data;
+    let retorno = [];
     
     if (this.props.id === 'cursos') {
-      retorno.map(d => d.text = d.text[0]);
+      data.map(d => retorno.push(JSON.parse(`{"text":"${d.text[0]}"}`)));
       retorno = removerObjetosDuplicados(retorno, 'text');
     } else {
-      retorno = retorno.filter(d => d.text[0].toLowerCase() === this.props.id.toLowerCase());
+      retorno = data.filter(d => d.text[0].toLowerCase() === this.props.id.toLowerCase());
     }
 
     return ordenarObjetos(retorno, 'text');
