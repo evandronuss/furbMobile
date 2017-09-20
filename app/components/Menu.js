@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Image
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import ItemMenu from './ItemMenu';
 
 const LogoFurb = require('../images/logo-furb.png');
@@ -19,8 +20,23 @@ export default class Menu extends Component {
         </View>
         <View style={{ backgroundColor: '#FFCC00', height: 3 }} />
         <View style={styles.itensMenu}>
-          <ItemMenu app={this.props.app} icon='location-on' text='Teste' />
-          <ItemMenu icon='exit-to-app' text='Sair' />
+          <ItemMenu
+            app={this.props.app}
+            icon='location-on'
+            text='Check-in'
+            onPress={Actions.matricula}
+          />
+          <ItemMenu
+            icon='exit-to-app'
+            text='Entrar'
+            onPress={Actions.matricula}
+          />
+          <ItemMenu
+            styleIcon={styles.icon}
+            icon='exit-to-app'
+            text='Sair'
+            onPress={Actions.matricula}
+          />
         </View>
       </View>
     );
@@ -39,5 +55,10 @@ const styles = StyleSheet.create({
   },
   itensMenu: {
     paddingTop: 30
+  },
+  icon: {
+    transform: [{
+      scaleX: -1
+    }]
   }
 });

@@ -5,13 +5,12 @@ import {
   StyleSheet,
   TouchableHighlight
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { Icon } from 'react-native-elements';
 
 export default class ItemMenu extends Component {
   onPress() {
     this.props.app.drawer.closeDrawer();
-    Actions.curso();
+    this.props.onPress();
   }
 
   render() {
@@ -24,6 +23,7 @@ export default class ItemMenu extends Component {
             name={this.props.icon}
             size={30}
             color='#005FA4'
+            iconStyle={this.props.styleIcon}
           />
           <Text style={styles.text}>
             {this.props.text}
