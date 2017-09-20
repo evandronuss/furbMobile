@@ -15,7 +15,7 @@ export default class Principal extends Component {
       }, {
         text: 'Cursos',
         icon: 'local-library',
-        onPress: Actions.centros
+        onPress: Actions.cursos
       }, {
         text: 'Ingresso',
         icon: 'arrow-downward',

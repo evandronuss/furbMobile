@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
 import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
+import { removerObjetosDuplicados, ordenarObjetos } from '../lib/Util';
 
 export default class Cursos extends Component {
   constructor(props) {
@@ -13,12 +14,25 @@ export default class Cursos extends Component {
 	}
 
   componentWillMount() {
-    axios.get(`http://localhost:8081/data/cursos/${this.props.id}.json`)
+    axios.get('http://localhost:8081/data/cursos.json')
       .then(response => this.setState({
-        listaCards: response.data,
+        listaCards: this.filtrarDadosExibir(response.data),
         visible: false
       }))
       .catch(() => console.log('Erro ao recuperar os dados'));
+  }
+
+  filtrarDadosExibir(data) {
+    let retorno = data;
+    
+    if (this.props.id === 'cursos') {
+      retorno.map(d => d.text = d.text[0]);
+      retorno = removerObjetosDuplicados(retorno, 'text');
+    } else {
+      retorno = retorno.filter(d => d.text[0].toLowerCase() === this.props.id.toLowerCase());
+    }
+
+    return ordenarObjetos(retorno, 'text');
   }
 
 	render() {
@@ -27,7 +41,7 @@ export default class Cursos extends Component {
         <Loading visible={this.state.visible} />
         <ListaCard
           listaCards={this.state.listaCards}
-          onPressDefault={Actions.curso}
+          onPressDefault={this.props.id === 'cursos' ? Actions.cursos : Actions.curso}
         />
       </ScrollView>
 		);

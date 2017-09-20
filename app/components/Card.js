@@ -21,7 +21,14 @@ export default class Card extends Component {
               size={50}
               color='#FFF'
             />}
-            <Text style={styles.text}>{this.props.text}</Text>
+            <Text
+              style={[
+                styles.text,
+                this.props.text.length === 1 && !this.props.icon ? styles.letter : undefined
+              ]}
+            >
+              {this.props.text}
+            </Text>
           </View>
         </TouchableHighlight>
       </View>
@@ -39,5 +46,8 @@ const styles = StyleSheet.create({
   text: {
     color: '#FFF',
     textAlign: 'center'
+  },
+  letter: {
+    fontSize: 40
   }
 });

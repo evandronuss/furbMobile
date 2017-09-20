@@ -10,7 +10,6 @@ import { Icon } from 'react-native-elements';
 import Menu from './components/Menu';
 import Principal from './scenes/Principal';
 import FURB from './scenes/FURB';
-import Centros from './scenes/Centros';
 import Cursos from './scenes/Cursos';
 import Curso from './scenes/Curso';
 import Ingresso from './scenes/Ingresso';
@@ -105,11 +104,6 @@ export default class App extends Component {
               key='furb'
               component={FURB}
               title='FURB - Universidade de Blumenau'
-            />
-            <Scene
-              key='centros'
-              component={Centros}
-              title='Centros dos Cursos'
             />
             <Scene
               key='cursos'

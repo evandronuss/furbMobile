@@ -140,4 +140,24 @@ const buscarUrlPais = (pais) => {
   return urlPaises + paises[nomeArquivo].idPais;
 };
 
-export { removerAcentos, gerarNomeArquivo, buscarImagemPais, buscarUrlPais };
+const removerObjetosDuplicados = (array, atributo) => {
+  const hash = {};
+
+  return array.filter((current) => {
+    const exists = !hash[current[atributo]] || false;
+    hash[current[atributo]] = true;
+    return exists;
+  });
+};
+
+const ordenarObjetos = (array, atributo) =>
+  array.sort((a, b) => a[atributo] < b[atributo] ? -1 : a[atributo] > b[atributo] ? 1 : 0);
+
+export {
+    removerAcentos,
+    gerarNomeArquivo,
+    buscarImagemPais,
+    buscarUrlPais,
+    removerObjetosDuplicados,
+    ordenarObjetos
+};
