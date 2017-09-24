@@ -18,3 +18,8 @@ npm install --save react-native-animatable
 npm install --save axios
 npm install --save react-native-loading-spinner-overlay
 npm install react-native-htmlview --save
+npm install --save react-native-push-notification
+react-native link
+npm install moment --save
+npm install babel-core --save
+npm install --save prop-types
