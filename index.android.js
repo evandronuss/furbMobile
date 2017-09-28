@@ -16,11 +16,17 @@ export default class furbMobile extends Component {
   configurarNotificacoes(notificacoes) {
     PushNotification.cancelAllLocalNotifications();
 
-    for (let i = 0; i < notificacoes.length; i++) {
-      PushNotification.localNotificationSchedule({
-        message: notificacoes[i].message,
-        date: Moment(notificacoes[i].date, 'DD-MM-YYYY h:mm').toDate()
-      });
+    const dataAtual = new Date();
+
+    for (const i in notificacoes) {
+      const dataNotificacao = Moment(notificacoes[i].date, 'DD-MM-YYYY h:mm').toDate();
+
+      if (dataNotificacao > dataAtual) {
+        PushNotification.localNotificationSchedule({
+          message: notificacoes[i].message,
+          date: dataNotificacao
+        });
+      }
     }
   }
 

@@ -78,18 +78,27 @@ export default class Panels extends Component {
         {horarios.map((item, index) => (
           <View
             key={`contentHorarios_${index}`}
-            style={{ flexDirection: 'row' }}
+            style={{ flexDirection: 'row', flexWrap: 'wrap' }}
           >
+            {item.campus && item.local && <Text>
+              {`Câmpus ${item.campus} - ${item.local} - `}
+            </Text>}
             <Text>
               {item.horario}
             </Text>
             {item.esgotado && <Text
-              style={{ fontWeight: 'bold', color: 'red' }}
+              style={{ color: 'red', fontSize: 12 }}
             >
-              {' (Esgotado)'}
+              {' *'}
             </Text>}
           </View>
         ))}
+        <Text />
+        <Text
+          style={{ color: 'red', fontSize: 12 }}
+        >
+          {'* Horários que não possuem mais vagas disponíveis.'}
+        </Text>
       </View>
     );
   }

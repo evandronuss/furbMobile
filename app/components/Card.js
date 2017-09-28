@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   letter: {
-    fontSize: 40
+    fontSize: 30
   }
 });

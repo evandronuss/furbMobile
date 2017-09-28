@@ -41,6 +41,7 @@ export default class Cursos extends Component {
         <Loading visible={this.state.visible} />
         <ListaCard
           listaCards={this.state.listaCards}
+          cardSize={this.props.id === 'cursos' ? 100 : undefined}
           onPressDefault={this.props.id === 'cursos' ? Actions.cursos : Actions.curso}
         />
       </ScrollView>

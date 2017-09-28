@@ -32,8 +32,8 @@ export default class ListaCard extends Component {
 
   calcularQuantidadeCards() {
     const { width } = Dimensions.get('window');
-    const qtdItemColuna = Math.floor(width / cardSize);
-    const margin = ((width - (cardSize * qtdItemColuna)) / (qtdItemColuna + 1));
+    const qtdItemColuna = Math.floor(width / (this.props.cardSize||cardSize));
+    const margin = ((width - ((this.props.cardSize||cardSize) * qtdItemColuna)) / (qtdItemColuna + 1));
 
     this.setState({
       qtdItemColuna,
@@ -52,7 +52,7 @@ export default class ListaCard extends Component {
               <Card
                 key={card.text}
                 style={this.state.styleCard}
-                cardSize={cardSize}
+                cardSize={(this.props.cardSize||cardSize)}
                 icon={card.icon}
                 type={card.type}
                 text={card.text}
