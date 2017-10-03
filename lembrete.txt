@@ -23,3 +23,5 @@ react-native link
 npm install moment --save
 npm install babel-core --save
 npm install --save prop-types
+npm install --save redux
+npm install --save react-redux

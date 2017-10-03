@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   View,
   StyleSheet,
   Image
 } from 'react-native';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import ItemMenu from './ItemMenu';
+import { removeItem } from '../lib/Util';
+import { modificaToken } from '../actions/AutenticacaoActions';
 
 const LogoFurb = require('../images/logo-furb.png');
 
-export default class Menu extends Component {
+class Menu extends Component {
+  sair() {
+    removeItem('token');
+    this.props.modificaToken(false);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -26,17 +35,19 @@ export default class Menu extends Component {
             text='Check-in'
             onPress={Actions.matricula}
           />
-          <ItemMenu
+          {!this.props.hasToken && <ItemMenu
+            app={this.props.app}
             icon='exit-to-app'
             text='Entrar'
-            onPress={Actions.matricula}
-          />
-          <ItemMenu
+            onPress={Actions.login}
+          />}
+          {this.props.hasToken && <ItemMenu
+            app={this.props.app}
             styleIcon={styles.icon}
             icon='exit-to-app'
             text='Sair'
-            onPress={Actions.matricula}
-          />
+            onPress={this.sair.bind(this)}
+          />}
         </View>
       </View>
     );
@@ -62,3 +73,11 @@ const styles = StyleSheet.create({
     }]
   }
 });
+
+const mapStateToProps = state => (
+  {
+    hasToken: state.AutenticacaoReducer.hasToken
+  }
+);
+
+export default connect(mapStateToProps, { modificaToken })(Menu);

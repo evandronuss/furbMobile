@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   DrawerLayoutAndroid,
   StyleSheet,
   TouchableHighlight,
   View
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 import Menu from './components/Menu';
 import Principal from './scenes/Principal';
+import Login from './scenes/Login';
 import FURB from './scenes/FURB';
 import Cursos from './scenes/Cursos';
 import Curso from './scenes/Curso';
@@ -18,8 +21,9 @@ import Matricula from './scenes/Matricula';
 import Interacao from './scenes/Interacao';
 import Programacao from './scenes/Programacao';
 import ProgramacaoCurso from './scenes/ProgramacaoCurso';
+import { modificaToken } from './actions/AutenticacaoActions';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -30,6 +34,12 @@ export default class App extends Component {
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
+  }
+
+  componentWillMount() {
+    AsyncStorage.getItem('token').then((token) => {
+      this.props.modificaToken(token !== null);
+    });
   }
 
   setDrawerState() {
@@ -101,6 +111,11 @@ export default class App extends Component {
               renderLeftButton={this.burgerMenu.bind(this)}
             />
             <Scene
+              key='login'
+              component={Login}
+              title='Login'
+            />
+            <Scene
               key='furb'
               component={FURB}
               title='FURB - Universidade de Blumenau'
@@ -160,3 +175,5 @@ const styles = StyleSheet.create({
     color: '#FFF'
   }
 });
+
+export default connect(null, { modificaToken })(App);

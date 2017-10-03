@@ -1,3 +1,7 @@
+import {
+  AsyncStorage
+} from 'react-native';
+
 const urlPaises = 'http://www.furb.br/web/4858/cursos/intercambio-academico/instituicoes-conveniadas/!/';
 const imgAlemanha = require('../images/alemanha.png');
 const imgArgentina = require('../images/argentina.png');
@@ -161,11 +165,29 @@ const ordenarObjetos = (array, atributo) =>
     return 0;
   });
 
+const saveItem = async (item, selectedValue) => {
+  try {
+    await AsyncStorage.setItem(item, selectedValue);
+  } catch (error) {
+    console.error('AsyncStorage error: ' + error.message);
+  }
+};
+
+const removeItem = async (item) => {
+  try {
+    await AsyncStorage.removeItem(item);
+  } catch (error) {
+    console.error('AsyncStorage error: ' + error.message);
+  }
+};
+
 export {
     removerAcentos,
     gerarNomeArquivo,
     buscarImagemPais,
     buscarUrlPais,
     removerObjetosDuplicados,
-    ordenarObjetos
+    ordenarObjetos,
+    saveItem,
+    removeItem
 };
