@@ -40,6 +40,7 @@ class Login extends Component {
           keyboardType="email-address"
           placeholder="exemplo@email.com"
           value={this.props.email}
+          autoFocus
         />
         <Button
           onPress={this.entrar.bind(this)}

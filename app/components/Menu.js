@@ -30,19 +30,16 @@ class Menu extends Component {
         <View style={{ backgroundColor: '#FFCC00', height: 3 }} />
         <View style={styles.itensMenu}>
           <ItemMenu
-            app={this.props.app}
             icon='location-on'
             text='Check-in'
             onPress={Actions.matricula}
           />
           {!this.props.hasToken && <ItemMenu
-            app={this.props.app}
             icon='exit-to-app'
             text='Entrar'
             onPress={Actions.login}
           />}
           {this.props.hasToken && <ItemMenu
-            app={this.props.app}
             styleIcon={styles.icon}
             icon='exit-to-app'
             text='Sair'

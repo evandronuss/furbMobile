@@ -11,12 +11,14 @@ export default (state = INITIAL_STATE, action) => {
         hasToken: action.payload
       };
     }
+
     case 'modifica_email': {
       return {
         ...state,
         email: action.payload
       };
     }
+
     default:
       return state;
   }

@@ -8,15 +8,10 @@ import {
 import { Icon } from 'react-native-elements';
 
 export default class ItemMenu extends Component {
-  onPress() {
-    this.props.app.drawer.closeDrawer();
-    this.props.onPress();
-  }
-
   render() {
     return (
       <TouchableHighlight
-        onPress={this.onPress.bind(this)}
+        onPress={this.props.onPress}
       >
         <View style={styles.itemMenu}>
           <Icon

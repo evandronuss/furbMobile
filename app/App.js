@@ -24,54 +24,24 @@ import ProgramacaoCurso from './scenes/ProgramacaoCurso';
 import { modificaToken } from './actions/AutenticacaoActions';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      drawerClosed: true,
-      drawerLockMode: 'unlocked'
-    };
-
-    this.toggleDrawer = this.toggleDrawer.bind(this);
-    this.setDrawerState = this.setDrawerState.bind(this);
-  }
-
   componentWillMount() {
     AsyncStorage.getItem('token').then((token) => {
       this.props.modificaToken(token !== null);
     });
   }
 
-  setDrawerState() {
-    this.setState({
-      drawerClosed: !this.state.drawerClosed
-    });
+  openDrawer() {
+    this.drawer.openDrawer();
   }
 
-  ativarDrawer() {
-    this.setState({
-      drawerLockMode: 'unlocked'
-    });
-  }
-
-  desativarDrawer() {
-    this.setState({
-      drawerLockMode: 'locked-closed'
-    });
-  }
-
-  toggleDrawer() {
-    if (this.state.drawerClosed) {
-      this.drawer.openDrawer();
-    } else {
-      this.drawer.closeDrawer();
-    }
+  closeDrawer() {
+    this.drawer.closeDrawer();
   }
 
   burgerMenu() {
     return (
       <TouchableHighlight
-        onPress={this.toggleDrawer}
+        onPress={this.openDrawer.bind(this)}
       >
         <View>
           <Icon
@@ -91,10 +61,7 @@ class App extends Component {
         drawerWidth={260}
         ref={(drawerElement) => { this.drawer = drawerElement; }}
         drawerPosition={DrawerLayoutAndroid.positions.left}
-        onDrawerOpen={this.setDrawerState}
-        onDrawerClose={this.setDrawerState}
-        renderNavigationView={() => <Menu app={this} />}
-        drawerLockMode={this.state.drawerLockMode}
+        renderNavigationView={() => <Menu />}
       >
         <Router
           navigationBarStyle={styles.navigationBarStyle}
@@ -114,6 +81,7 @@ class App extends Component {
               key='login'
               component={Login}
               title='Login'
+              onEnter={this.closeDrawer.bind(this)}
             />
             <Scene
               key='furb'
