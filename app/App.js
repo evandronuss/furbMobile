@@ -21,10 +21,13 @@ import Matricula from './scenes/Matricula';
 import Interacao from './scenes/Interacao';
 import Programacao from './scenes/Programacao';
 import ProgramacaoCurso from './scenes/ProgramacaoCurso';
-import { modificaToken } from './actions/AutenticacaoActions';
+import { modificaToken, modificaEmail } from './actions/AutenticacaoActions';
 
 class App extends Component {
   componentWillMount() {
+    AsyncStorage.getItem('email').then((email) => {
+      this.props.modificaEmail(email);
+    });
     AsyncStorage.getItem('token').then((token) => {
       this.props.modificaToken(token !== null);
     });
@@ -144,4 +147,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, { modificaToken })(App);
+export default connect(null, { modificaToken, modificaEmail })(App);

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import URL_SITE, { URL_API } from '../lib/Configuracoes';
+import { URL_API } from '../lib/Configuracoes';
 import { gerarNomeArquivo } from '../lib/Util';
 
-export default class ProgramacaoCurso extends Component {
+class ProgramacaoCurso extends Component {
 	constructor(props) {
     super(props);
 
@@ -79,8 +80,19 @@ export default class ProgramacaoCurso extends Component {
   }
 
   componentWillMount() {
+    let urlFiltro = '';
+    debugger
+    if (this.props.filtrarPorUsuario)
+    {
+      urlFiltro = `GetProgramacaoCursoUsuario/${this.props.id}/${this.props.email}/`;
+    }
+    else
+    {
+      urlFiltro = `GetProgramacaoCurso/${this.props.id}/`;
+    }
+
     axios.all([
-      axios.get(`${URL_SITE}programacao/${this.props.id}.json`),
+      axios.get(`${URL_API}programacao/${urlFiltro}`),
       axios.get(`${URL_API}Oficina/${this.props.id}`)
     ])
     .then(axios.spread((programacaoResponse, localResponse) => this.setState({
@@ -108,3 +120,11 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+
+const mapStateToProps = state => (
+  {
+    email: state.AutenticacaoReducer.email
+  }
+);
+
+export default connect(mapStateToProps, null)(ProgramacaoCurso);

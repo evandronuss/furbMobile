@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Alert,
   Button,
   StyleSheet,
   Text,
@@ -8,6 +9,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Actions } from 'react-native-router-flux';
 import { URL_API } from '../lib/Configuracoes';
 import { saveItem, removeItem } from '../lib/Util';
 import { modificaToken, modificaEmail } from '../actions/AutenticacaoActions';
@@ -18,13 +20,17 @@ class Login extends Component {
     .then(response => {
       if (response.data.token)
       {
+        saveItem('email', this.props.email);
         saveItem('token', response.data.token);
         this.props.modificaToken(true);
+        Actions.pop();
       }
       else
       {
+        removeItem('email');
         removeItem('token');
         this.props.modificaToken(false);
+        Alert.alert('E-mail inválido', 'Insira um e-mail cadastrado no evento Interação FURB.');
       }
     })
     .catch(() => console.log('Erro ao recuperar os dados'));

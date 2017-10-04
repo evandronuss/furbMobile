@@ -58,6 +58,7 @@ export default class ListaCard extends Component {
                 text={card.text}
                 onPress={
                   (card.onPress || this.props.onPressDefault).bind(this, {
+                    ...this.props.onPressDefaultParams,
                     id: gerarNomeArquivo(card.text)
                   })
                 }
