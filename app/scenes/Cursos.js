@@ -5,6 +5,7 @@ import axios from 'axios';
 import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
 import { removerObjetosDuplicados, ordenarObjetos } from '../lib/Util';
+import URL_SITE from '../lib/Configuracoes';
 
 export default class Cursos extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class Cursos extends Component {
 	}
 
   componentWillMount() {
-    axios.get('http://localhost:8081/data/cursos.json')
+    axios.get(`${URL_SITE}cursos.json`)
       .then(response => this.setState({
         listaCards: this.filtrarDadosExibir(response.data),
         visible: false

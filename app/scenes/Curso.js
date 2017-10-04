@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
+import URL_SITE from '../lib/Configuracoes';
 
 export default class Curso extends Component {
 	constructor(props) {
@@ -13,8 +14,8 @@ export default class Curso extends Component {
 
   componentWillMount() {
     axios.all([
-      axios.get('http://localhost:8081/data/cursos/paineis_cursos.json'),
-      axios.get(`http://localhost:8081/data/cursos/informacoes/${this.props.id}.json`)
+      axios.get(`${URL_SITE}cursos/paineis_cursos.json`),
+      axios.get(`${URL_SITE}cursos/informacoes/${this.props.id}.json`)
     ])
     .then(axios.spread((paineisResponse, informacaoResponse) => this.setState({
       panels: paineisResponse.data,

@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
+import URL_SITE from '../lib/Configuracoes';
 
 export default class Financiamento extends Component {
 	constructor(props) {
@@ -12,7 +13,7 @@ export default class Financiamento extends Component {
 	}
 
   componentWillMount() {
-    axios.get('http://localhost:8081/data/financiamento.json')
+    axios.get(`${URL_SITE}financiamento.json`)
       .then(response => this.setState({
         panels: response.data.panels,
         contentPanels: response.data.contentPanels,
