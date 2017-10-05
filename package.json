@@ -10,6 +10,7 @@
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
     "babel-preset-react-native": "^2.1.0",
+    "eslint-config-rallycoding": "^3.2.0",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.12",
@@ -20,6 +21,7 @@
     "react-native-htmlview": "^0.12.0",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-push-notification": "^3.0.1",
+    "react-native-qrcode": "^0.2.6",
     "react-native-router-flux": "^4.0.0-beta.18",
     "react-native-vector-icons": "^4.3.0",
     "react-redux": "^5.0.6",
@@ -27,7 +29,6 @@
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
-    "eslint-config-rallycoding": "^3.2.0",
     "jest": "20.0.4",
     "react-test-renderer": "16.0.0-alpha.12"
   },

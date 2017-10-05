@@ -3,7 +3,6 @@ import {
   Alert,
   Button,
   StyleSheet,
-  Text,
   TextInput,
   View
 } from 'react-native';
@@ -18,15 +17,12 @@ class Login extends Component {
   entrar() {
     axios.get(`${URL_API}Login/${this.props.email}`)
     .then(response => {
-      if (response.data.token)
-      {
+      if (response.data.token) {
         saveItem('email', this.props.email);
         saveItem('token', response.data.token);
         this.props.modificaToken(true);
         Actions.pop();
-      }
-      else
-      {
+      } else {
         removeItem('email');
         removeItem('token');
         this.props.modificaToken(false);

@@ -38,7 +38,7 @@ class Menu extends Component {
           {this.props.hasToken && <ItemMenu
             icon='location-on'
             text='Check-in'
-            onPress={Actions.matricula}
+            onPress={Actions.checkin}
           />}
           {this.props.hasToken && <ItemMenu
             icon='settings'

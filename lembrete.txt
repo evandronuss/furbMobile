@@ -7,7 +7,7 @@ arquivo .eslintrc
     "extends": "rallycoding"
 }
 
-npm install --save-dev eslint-config-rallycoding
+npm install --save eslint-config-rallycoding
 npm uninstall babel-preset-react-native
 npm install babel-preset-react-native@2.1.0
 npm install --save react-native-router-flux
@@ -25,3 +25,4 @@ npm install babel-core --save
 npm install --save prop-types
 npm install --save redux
 npm install --save react-redux
+npm install react-native-qrcode --save

@@ -21,6 +21,7 @@ import Matricula from './scenes/Matricula';
 import Interacao from './scenes/Interacao';
 import Programacao from './scenes/Programacao';
 import ProgramacaoCurso from './scenes/ProgramacaoCurso';
+import Checkin from './scenes/Checkin';
 import { modificaToken, modificaEmail } from './actions/AutenticacaoActions';
 
 class App extends Component {
@@ -125,11 +126,18 @@ class App extends Component {
               key='programacao'
               component={Programacao}
               title='Programação'
+              onEnter={this.closeDrawer.bind(this)}
             />
             <Scene
               key='programacaocurso'
               component={ProgramacaoCurso}
               title='Programação'
+            />
+            <Scene
+              key='checkin'
+              component={Checkin}
+              title='Check-in'
+              onEnter={this.closeDrawer.bind(this)}
             />
           </Scene>
         </Router>
