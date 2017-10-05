@@ -45,6 +45,8 @@ class App extends Component {
   burgerMenu() {
     return (
       <TouchableHighlight
+        activeOpacity={1}
+        underlayColor={'#00549A'}
         onPress={this.openDrawer.bind(this)}
       >
         <View>

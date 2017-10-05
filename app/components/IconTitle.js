@@ -17,9 +17,9 @@ export default class ItemMenu extends Component {
   render() {
     return (
       <TouchableHighlight
+      activeOpacity={1}
+      underlayColor='#FFF'
         onPress={this.onPress.bind(this)}
-        activeOpacity={1}
-        underlayColor='#FFF'
       >
         <View style={[styles.itemMenu, this.props.styles]}>
           <Image

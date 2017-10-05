@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import URL_SITE from '../lib/Configuracoes';
+import URL_SITE, { URL_API } from '../lib/Configuracoes';
 
 export default class Curso extends Component {
 	constructor(props) {
@@ -15,14 +15,72 @@ export default class Curso extends Component {
   componentWillMount() {
     axios.all([
       axios.get(`${URL_SITE}cursos/paineis_cursos.json`),
-      axios.get(`${URL_SITE}cursos/informacoes/${this.props.id}.json`)
+      axios.get(`${URL_SITE}cursos/informacoes/${this.props.id}.json`),
+      axios.get(`${URL_API}Curso/GetMensalidadeCurso/${this.props.id}`)
     ])
-    .then(axios.spread((paineisResponse, informacaoResponse) => this.setState({
-      panels: paineisResponse.data,
-      contentPanels: informacaoResponse.data.contentPanels,
-      visible: false
-    })))
+    .then(axios.spread((paineisResponse, informacaoResponse, mensalidadeResponse) => {
+      const informacoesCursos = this.adicionarMensalidade(
+                                paineisResponse,
+                                informacaoResponse,
+                                mensalidadeResponse
+                              );
+
+      this.setState({
+        panels: informacoesCursos.panels,
+        contentPanels: informacoesCursos.contentPanels,
+        visible: false
+      });
+    }))
     .catch(() => console.log('Erro ao recuperar os dados'));
+  }
+
+  adicionarMensalidade(paineisResponse, informacaoResponse, mensalidadeResponse) {
+    const turnos = mensalidadeResponse.data;
+    let conteudo = '';
+    const panels = paineisResponse.data;
+    const contentPanels = informacaoResponse.data.contentPanels;
+
+    for (let i = 0; i < turnos.length; i++) {
+      const creditoFinanceiro1Fase = turnos[i].creditoFinanceiro1Fase;
+      const creditoFinanceiroSemestre = turnos[i].creditoFinanceiroSemestre;
+      const valorMensalidade6Parcelas = turnos[i].valorMensalidade6Parcelas.toLocaleString('pt-BR');
+      const valorMatricula6Parcelas = turnos[i].valorMatricula6Parcelas.toLocaleString('pt-BR');
+      const valorMensalidade5Parcelas = turnos[i].valorMensalidade5Parcelas.toLocaleString('pt-BR');
+      const valorMatricula5Parcelas = turnos[i].valorMatricula5Parcelas.toLocaleString('pt-BR');
+
+      conteudo += 
+        `<b>Turno ${turnos[i].nome}</b>` +
+        '<br /><br />' +
+        `<b>Créditos Financeiro na 1ª fase:</b> ${creditoFinanceiro1Fase}` +
+        '<br />' +
+        `<b>Créditos Financeiro no semestre:</b> ${creditoFinanceiroSemestre}` +
+        '<br />' +
+        `<b>Mensalidade em 6 parcelas:</b> R$ ${valorMensalidade6Parcelas}` +
+        '<br />' +
+        `<b>Matrícula em 6 parcelas:</b> R$ ${valorMatricula6Parcelas}` +
+        '<br />' +
+        `<b>Mensalidade em 5 parcelas:</b> R$ ${valorMensalidade5Parcelas}` +
+        '<br />' +
+        `<b>Matrícula em 5 parcelas:</b> R$ ${valorMatricula5Parcelas}`;
+
+      if (i !== (turnos.length - 1)) {
+        conteudo += '<br /><br /><br />';
+      }
+    }
+
+    panels.splice(1, 0, {
+      ref: 'mensalidades',
+      title: 'Mensalidades'
+    });
+
+    contentPanels.mensalidades = [{
+      content: conteudo
+    }];
+
+    return {
+      panels,
+      contentPanels
+    };
   }
 
 	render() {

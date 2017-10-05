@@ -40,6 +40,8 @@ export default class Interacao extends Component {
             value={`<p>${this.state.content}</p>`}
           />
           <TouchableHighlight
+            activeOpacity={1}
+            underlayColor={'#FFF'}
             onPress={Actions.programacao}
           >
             <View>

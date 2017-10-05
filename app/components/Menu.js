@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AsyncStorage,
   View,
   StyleSheet,
   Image,
@@ -31,7 +30,7 @@ class Menu extends Component {
           />
         </View>
         <Text style={styles.usuario}>
-          {!!this.props.email ? `Usuário: ${this.props.email}` : ''}
+          {this.props.email ? `Usuário: ${this.props.email}` : ''}
         </Text>
         <View style={{ backgroundColor: '#FFCC00', height: 4 }} />
         <View style={styles.itensMenu}>
