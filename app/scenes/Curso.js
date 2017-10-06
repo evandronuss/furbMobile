@@ -4,6 +4,7 @@ import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import URL_SITE, { URL_API } from '../lib/Configuracoes';
+import { formatMoney } from '../lib/Util';
 
 export default class Curso extends Component {
 	constructor(props) {
@@ -43,10 +44,10 @@ export default class Curso extends Component {
     for (let i = 0; i < turnos.length; i++) {
       const creditoFinanceiro1Fase = turnos[i].creditoFinanceiro1Fase;
       const creditoFinanceiroSemestre = turnos[i].creditoFinanceiroSemestre;
-      const valorMensalidade6Parcelas = turnos[i].valorMensalidade6Parcelas.toLocaleString('pt-BR');
-      const valorMatricula6Parcelas = turnos[i].valorMatricula6Parcelas.toLocaleString('pt-BR');
-      const valorMensalidade5Parcelas = turnos[i].valorMensalidade5Parcelas.toLocaleString('pt-BR');
-      const valorMatricula5Parcelas = turnos[i].valorMatricula5Parcelas.toLocaleString('pt-BR');
+      const valorMensalidade6Parcelas = formatMoney(turnos[i].valorMensalidade6Parcelas);
+      const valorMatricula6Parcelas = formatMoney(turnos[i].valorMatricula6Parcelas);
+      const valorMensalidade5Parcelas = formatMoney(turnos[i].valorMensalidade5Parcelas);
+      const valorMatricula5Parcelas = formatMoney(turnos[i].valorMatricula5Parcelas);
 
       conteudo += 
         `<b>Turno ${turnos[i].nome}</b>` +
@@ -67,6 +68,8 @@ export default class Curso extends Component {
         conteudo += '<br /><br /><br />';
       }
     }
+
+    conteudo += '<br /><br /><b><a href="http://www.furb.br/web/mensalidades.php">furb.br/web/mensalidades</a></b>';
 
     panels.splice(1, 0, {
       ref: 'mensalidades',

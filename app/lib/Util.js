@@ -169,7 +169,7 @@ const saveItem = async (item, selectedValue) => {
   try {
     await AsyncStorage.setItem(item, selectedValue);
   } catch (error) {
-    console.error('AsyncStorage error: ' + error.message);
+    console.error(`AsyncStorage error: ${error.message}`);
   }
 };
 
@@ -177,9 +177,12 @@ const removeItem = async (item) => {
   try {
     await AsyncStorage.removeItem(item);
   } catch (error) {
-    console.error('AsyncStorage error: ' + error.message);
+    console.error(`AsyncStorage error: ${error.message}`);
   }
 };
+
+const formatMoney = (valor) => 
+  valor.toString().replace(/\./g, ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
 export {
     removerAcentos,
@@ -189,5 +192,6 @@ export {
     removerObjetosDuplicados,
     ordenarObjetos,
     saveItem,
-    removeItem
+    removeItem,
+    formatMoney
 };
