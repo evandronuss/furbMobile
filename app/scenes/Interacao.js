@@ -5,7 +5,7 @@ import HTMLView from 'react-native-htmlview';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import URL_SITE from '../lib/Configuracoes';
+import { URL_SITE } from '../lib/Configuracoes';
 
 export default class Interacao extends Component {
 	constructor(props) {

@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import URL_SITE, { URL_API } from '../lib/Configuracoes';
+import URL_API, { URL_SITE } from '../lib/Configuracoes';
 import { formatMoney } from '../lib/Util';
 
 export default class Curso extends Component {

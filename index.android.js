@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import Moment from 'moment';
 import axios from 'axios';
 import App from './app/App';
-import URL_SITE from './app/lib/Configuracoes';
+import { URL_SITE } from './app/lib/Configuracoes';
 import reducers from './app/reducers';
 
 export default class furbMobile extends Component {

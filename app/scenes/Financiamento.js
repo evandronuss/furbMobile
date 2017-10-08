@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import URL_SITE from '../lib/Configuracoes';
+import { URL_SITE } from '../lib/Configuracoes';
 
 export default class Financiamento extends Component {
 	constructor(props) {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import HTMLView from 'react-native-htmlview';
 import Topic from '../components/Topic';
 import Loading from '../components/Loading';
-import URL_SITE from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 
 export default class Ingresso extends Component {
 	constructor(props) {
@@ -14,9 +14,9 @@ export default class Ingresso extends Component {
 	}
 
   componentWillMount() {
-    axios.get(`${URL_SITE}ingresso.json`)
+    axios.get(`${URL_API}ingresso`)
       .then(response => this.setState({
-        data: response.data,
+        data: response.data.data,
         visible: false
       }))
       .catch(() => console.log('Erro ao recuperar os dados'));

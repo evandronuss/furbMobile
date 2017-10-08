@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
-import { URL_API } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 
 class Programacao extends Component {
   constructor(props) {
@@ -17,8 +17,7 @@ class Programacao extends Component {
   componentWillMount() {
     let urlFiltro = '';
     
-    if (this.props.filtrarPorUsuario)
-    {
+    if (this.props.filtrarPorUsuario) {
       urlFiltro = `GetProgramacaoUsuario/${this.props.email}`;
     }
 

@@ -5,7 +5,7 @@ import axios from 'axios';
 import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
 import { removerObjetosDuplicados, ordenarObjetos } from '../lib/Util';
-import URL_SITE from '../lib/Configuracoes';
+import { URL_SITE } from '../lib/Configuracoes';
 
 export default class Cursos extends Component {
   constructor(props) {

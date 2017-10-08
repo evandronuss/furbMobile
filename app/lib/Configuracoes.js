@@ -2,7 +2,7 @@
 const URL_SITE = 'http://evandron-pc/FurbMobile/';
 const URL_API = 'http://evandron-pc:5000/api/';
 
-export default URL_SITE;
+export default URL_API;
 export {
-  URL_API
+  URL_SITE
 };

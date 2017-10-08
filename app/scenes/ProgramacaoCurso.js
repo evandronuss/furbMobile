@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import { URL_API } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 import { gerarNomeArquivo } from '../lib/Util';
 
 class ProgramacaoCurso extends Component {
@@ -14,80 +14,12 @@ class ProgramacaoCurso extends Component {
     this.state = { panels: [], contentPanels: [], visible: true };
 	}
 
-  adicionarLocal(programacaoResponse, localResponse) {
-    let panels = programacaoResponse.data.panels;
-    let contentPanels = programacaoResponse.data.contentPanels;
-    let localData = localResponse.data;
-
-    for (const id in localData) {
-      if (!localData[id] || !localData[id].horarios) {
-        continue;
-      }
-
-      for (const i = 0; i < panels.length; i++) {
-        if (
-          gerarNomeArquivo(panels[i].title) !== id ||
-          !contentPanels[i] ||
-          !contentPanels[i].contentPanel
-        ) {
-          continue;
-        }
-
-        for (const x = 0; x < localData[id].horarios.length; x++) {
-          if (
-            !localData[id].horarios[x] ||
-            !localData[id].horarios[x].hora ||
-            localData[id].horarios[x].hora.length < 5
-          ) {
-            continue;
-          }
-
-          const localHora = localData[id].horarios[x];
-
-          for (const y = 0; y < contentPanels[i].contentPanel.length; y++) {
-            if (
-              !contentPanels[i].contentPanel[y] ||
-              !contentPanels[i].contentPanel[y].horarios
-            ) {
-              continue;
-            }
-
-            const contentPanel = contentPanels[i].contentPanel[y];
-
-            for (const z = 0; z < contentPanel.horarios.length; z++) {
-              if (
-                !contentPanel.horarios[z] ||
-                !contentPanel.horarios[z].horario ||
-                contentPanel.horarios[z].horario.length < 5
-              ) {
-                continue;
-              }
-
-              if (
-                contentPanel.horarios[z].horario.substring(0, 5).replace(":", "h") ===
-                localHora.hora.substring(0, 5).replace(":", "h")
-              ) {
-                contentPanel.horarios[z].campus = localHora.campus;
-                contentPanel.horarios[z].local = localHora.local;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    return contentPanels;
-  }
-
   componentWillMount() {
     let urlFiltro = '';
-    debugger
-    if (this.props.filtrarPorUsuario)
-    {
+
+    if (this.props.filtrarPorUsuario) {
       urlFiltro = `GetProgramacaoCursoUsuario/${this.props.id}/${this.props.email}/`;
-    }
-    else
-    {
+    } else {
       urlFiltro = `GetProgramacaoCurso/${this.props.id}/`;
     }
 
@@ -100,6 +32,61 @@ class ProgramacaoCurso extends Component {
       contentPanels: this.adicionarLocal(programacaoResponse, localResponse),
       visible: false
     })));
+  }
+  
+  adicionarLocal(programacaoResponse, localResponse) {
+    const panels = programacaoResponse.data.panels;
+    const contentPanels = programacaoResponse.data.contentPanels;
+    const localData = localResponse.data;
+
+    for (const id in localData) {
+      if (localData[id] && localData[id].horarios) {
+        for (let i = 0; i < panels.length; i++) {
+          if (
+            gerarNomeArquivo(panels[i].title) === id &&
+            contentPanels[i] &&
+            contentPanels[i].contentPanel
+          ) {
+            for (let x = 0; x < localData[id].horarios.length; x++) {
+              if (
+                localData[id].horarios[x] &&
+                localData[id].horarios[x].hora &&
+                localData[id].horarios[x].hora.length >= 5
+              ) {
+                const localHora = localData[id].horarios[x];
+
+                for (let y = 0; y < contentPanels[i].contentPanel.length; y++) {
+                  if (
+                    contentPanels[i].contentPanel[y] &&
+                    contentPanels[i].contentPanel[y].horarios
+                  ) {
+                    const contentPanel = contentPanels[i].contentPanel[y];
+
+                    for (let z = 0; z < contentPanel.horarios.length; z++) {
+                      if (
+                        contentPanel.horarios[z] &&
+                        contentPanel.horarios[z].horario &&
+                        contentPanel.horarios[z].horario.length >= 5
+                      ) {
+                        if (
+                          contentPanel.horarios[z].horario.substring(0, 5).replace(':', 'h') ===
+                          localHora.hora.substring(0, 5).replace(':', 'h')
+                        ) {
+                          contentPanel.horarios[z].campus = localHora.campus;
+                          contentPanel.horarios[z].local = localHora.local;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return contentPanels;
   }
 
 	render() {

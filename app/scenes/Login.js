@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
-import { URL_API } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 import { saveItem, removeItem } from '../lib/Util';
 import { modificaToken, modificaEmail } from '../actions/AutenticacaoActions';
 
