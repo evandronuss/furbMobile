@@ -5,7 +5,7 @@ import HTMLView from 'react-native-htmlview';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
-import { URL_SITE } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 
 export default class Interacao extends Component {
 	constructor(props) {
@@ -21,7 +21,7 @@ export default class Interacao extends Component {
 	}
 
   componentWillMount() {
-    axios.get(`${URL_SITE}interacao.json`)
+    axios.get(`${URL_API}interacao`)
       .then(response => this.setState({
         content: response.data.content,
         programacao: response.data.programacao,
