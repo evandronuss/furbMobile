@@ -12,7 +12,7 @@ import reducers from './app/reducers';
 export default class furbMobile extends Component {
   componentWillMount() {
     axios.get(`${URL_API}notificacao`)
-      .then(response => { debugger; this.configurarNotificacoes(response.data.data); })
+      .then(response => { this.configurarNotificacoes(response.data.data); })
       .catch(() => console.log('Erro ao recuperar os dados'));
   }
 

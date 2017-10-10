@@ -4,7 +4,8 @@ import {
   DrawerLayoutAndroid,
   StyleSheet,
   TouchableHighlight,
-  View
+  View,
+  NetInfo
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -23,6 +24,7 @@ import Programacao from './scenes/Programacao';
 import ProgramacaoCurso from './scenes/ProgramacaoCurso';
 import Checkin from './scenes/Checkin';
 import { modificaToken, modificaEmail } from './actions/AutenticacaoActions';
+import { alteraStatusConexao } from './actions/ConnectionActions';
 
 class App extends Component {
   componentWillMount() {
@@ -32,6 +34,18 @@ class App extends Component {
     AsyncStorage.getItem('token').then((token) => {
       this.props.modificaToken(token !== null);
     });
+  }
+
+  componentDidMount() {
+    NetInfo.isConnected.addEventListener('change', (isConnected) => this.handleConnectionChange(isConnected));
+  }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener('change', (isConnected) => this.handleConnectionChange(isConnected));
+  }
+
+  handleConnectionChange(isConnected) {
+    this.props.alteraStatusConexao(isConnected);
   }
 
   openDrawer() {
@@ -157,4 +171,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, { modificaToken, modificaEmail })(App);
+export default connect(null, { modificaToken, modificaEmail, alteraStatusConexao })(App);

@@ -1,6 +1,7 @@
 import {
   AsyncStorage
 } from 'react-native';
+import Moment from 'moment';
 
 const urlPaises = 'http://www.furb.br/web/4858/cursos/intercambio-academico/instituicoes-conveniadas/!/';
 const imgAlemanha = require('../images/alemanha.png');
@@ -167,7 +168,19 @@ const ordenarObjetos = (array, atributo) =>
 
 const saveItem = async (item, selectedValue) => {
   try {
-    await AsyncStorage.setItem(item, selectedValue);
+    await AsyncStorage.setItem(item, JSON.stringify({
+      date: Moment().format('DD/MM/YYYY H:mm'),
+      value: selectedValue
+    }));
+  } catch (error) {
+    console.error(`AsyncStorage error: ${error.message}`);
+  }
+};
+
+const getItem = async (item) => {
+  try {
+    const value = await AsyncStorage.getItem(item);
+    return JSON.parse(value); 
   } catch (error) {
     console.error(`AsyncStorage error: ${error.message}`);
   }
@@ -192,6 +205,7 @@ export {
     removerObjetosDuplicados,
     ordenarObjetos,
     saveItem,
+    getItem,
     removeItem,
     formatMoney
 };
