@@ -1,38 +1,79 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { Alert, ScrollView, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
+import MessageDate from '../components/MessageDate';
 import URL_API, { URL_SITE } from '../lib/Configuracoes';
-import { formatMoney } from '../lib/Util';
+import { formatMoney, saveItem, getItem } from '../lib/Util';
 
-export default class Curso extends Component {
+class Curso extends Component {
 	constructor(props) {
     super(props);
 
-    this.state = { panels: [], contentPanels: [], visible: true };
+    this.state = {
+      panels: [],
+      contentPanels: [],
+      visible: true,
+      date: ''
+    };
 	}
 
   componentWillMount() {
-    axios.all([
-      axios.get(`${URL_SITE}cursos/paineis_cursos.json`),
-      axios.get(`${URL_SITE}cursos/informacoes/${this.props.id}.json`),
-      axios.get(`${URL_API}Curso/GetMensalidadeCurso/${this.props.id}`)
-    ])
-    .then(axios.spread((paineisResponse, informacaoResponse, mensalidadeResponse) => {
-      const informacoesCursos = this.adicionarMensalidade(
-                                paineisResponse,
-                                informacaoResponse,
-                                mensalidadeResponse
-                              );
+    if (this.props.isConnected) {
+      axios.all([
+        axios.get(`${URL_SITE}cursos/paineis_cursos.json`),
+        axios.get(`${URL_SITE}cursos/informacoes/${this.props.id}.json`),
+        axios.get(`${URL_API}Curso/GetMensalidadeCurso/${this.props.id}`)
+      ])
+      .then(axios.spread((paineisResponse, informacaoResponse, mensalidadeResponse) => {
+        const informacoesCursos = this.adicionarMensalidade(
+          paineisResponse,
+          informacaoResponse,
+          mensalidadeResponse
+        );
 
-      this.setState({
-        panels: informacoesCursos.panels,
-        contentPanels: informacoesCursos.contentPanels,
-        visible: false
-      });
-    }))
-    .catch(() => console.log('Erro ao recuperar os dados'));
+        this.carregarInformacoesOnline(informacoesCursos);
+      }))
+      .catch(() => this.carregarInformacoesOffline());
+    } else {
+      this.carregarInformacoesOffline();
+    }
+  }
+  
+  carregarInformacoesOnline(response) {
+    saveItem(`Curso/${this.props.id}`, JSON.stringify(response));
+
+    this.carregarInformacoes(response);
+  }
+
+  carregarInformacoesOffline() {
+    console.log('Erro ao recuperar os dados');
+
+    getItem(`Curso/${this.props.id}`).then((response) => {
+      if (response) {
+        this.carregarInformacoes(JSON.parse(response.value), response.date);
+      } else if (this.props.isConnected) {
+        Alert.alert('Nenhum Registro foi encontrado!');
+        this.setState({ visible: false });
+        Actions.pop();
+      } else {
+        Alert.alert('Ops! Parece que você está sem internet.');
+        this.setState({ visible: false });
+        Actions.pop();
+      }
+    });
+  }
+
+  carregarInformacoes(response, date) {
+    this.setState({
+      panels: response.panels,
+      contentPanels: response.contentPanels,
+      visible: false,
+      date
+    });
   }
 
   adicionarMensalidade(paineisResponse, informacaoResponse, mensalidadeResponse) {
@@ -90,6 +131,7 @@ export default class Curso extends Component {
     return (
 			<ScrollView style={styles.container}>
         <Loading visible={this.state.visible} />
+        <MessageDate date={this.state.date} />
         <Panels
           panels={this.state.panels}
           contentPanels={this.state.contentPanels}
@@ -104,3 +146,11 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+
+const mapStateToProps = state => (
+  {
+    isConnected: state.ConnectionReducer.isConnected
+  }
+);
+
+export default connect(mapStateToProps, null)(Curso);

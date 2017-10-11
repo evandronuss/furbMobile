@@ -25,14 +25,15 @@ import ProgramacaoCurso from './scenes/ProgramacaoCurso';
 import Checkin from './scenes/Checkin';
 import { modificaToken, modificaEmail } from './actions/AutenticacaoActions';
 import { alteraStatusConexao } from './actions/ConnectionActions';
+import { getItem } from './lib/Util';
 
 class App extends Component {
   componentWillMount() {
-    AsyncStorage.getItem('email').then((email) => {
-      this.props.modificaEmail(email);
+    getItem('email').then((response) => {
+      this.props.modificaEmail(response ? response.value : '');
     });
-    AsyncStorage.getItem('token').then((token) => {
-      this.props.modificaToken(token !== null);
+    getItem('token').then((response) => {
+      this.props.modificaToken(response && response.value !== null);
     });
   }
 

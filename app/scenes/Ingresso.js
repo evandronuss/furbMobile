@@ -1,25 +1,66 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { Alert, StyleSheet, View, ScrollView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import HTMLView from 'react-native-htmlview';
 import Topic from '../components/Topic';
 import Loading from '../components/Loading';
+import MessageDate from '../components/MessageDate';
 import URL_API from '../lib/Configuracoes';
+import { saveItem, getItem } from '../lib/Util';
 
-export default class Ingresso extends Component {
+class Ingresso extends Component {
 	constructor(props) {
     super(props);
 
-    this.state = { data: [], visible: true };
+    this.state = {
+      data: [],
+      visible: true,
+      date: ''
+    };
 	}
 
   componentWillMount() {
-    axios.get(`${URL_API}ingresso`)
-      .then(response => this.setState({
-        data: response.data.data,
-        visible: false
-      }))
-      .catch(() => console.log('Erro ao recuperar os dados'));
+    if (this.props.isConnected) {
+      axios.get(`${URL_API}ingresso`)
+        .then(response => this.carregarInformacoesOnline(response))
+        .catch(() => this.carregarInformacoesOffline());
+    } else {
+      this.carregarInformacoesOffline();
+    }
+  }
+  
+  carregarInformacoesOnline(response) {
+    saveItem('Ingresso', JSON.stringify(response));
+
+    this.carregarInformacoes(response);
+  }
+
+  carregarInformacoesOffline() {
+    console.log('Erro ao recuperar os dados');
+
+    getItem('Ingresso').then((response) => {
+      if (response) {
+        this.carregarInformacoes(JSON.parse(response.value), response.date);
+      } else if (this.props.isConnected) {
+        Alert.alert('Nenhum Registro foi encontrado!');
+        this.setState({ visible: false });
+        Actions.pop();
+      } else {
+        Alert.alert('Ops! Parece que você está sem internet.');
+        this.setState({ visible: false });
+        Actions.pop();
+      }
+    });
+  }
+
+  carregarInformacoes(response, date) {
+    this.setState({
+      data: response.data.data,
+      visible: false,
+      date
+    });
   }
 
   renderTextContent(content, key) {
@@ -44,6 +85,7 @@ export default class Ingresso extends Component {
 		return (
 			<ScrollView style={styles.container}>
         <Loading visible={this.state.visible} />
+        <MessageDate date={this.state.date} />
         <View
           style={[styles.content]}
         >
@@ -70,3 +112,11 @@ const styles = StyleSheet.create({
     padding: 20
   }
 });
+
+const mapStateToProps = state => (
+  {
+    isConnected: state.ConnectionReducer.isConnected
+  }
+);
+
+export default connect(mapStateToProps, null)(Ingresso);

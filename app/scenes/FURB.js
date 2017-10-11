@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { AsyncStorage, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import HTMLView from 'react-native-htmlview';
 import axios from 'axios';
@@ -25,8 +26,8 @@ class FURB extends Component {
   componentWillMount() {
     if (this.props.isConnected) {
       axios.get(`${URL_SITE}furb.json`)
-      .then(response => this.carregarInformacoesOnline(response))
-      .catch(() => this.carregarInformacoesOffline());
+        .then(response => this.carregarInformacoesOnline(response))
+        .catch(() => this.carregarInformacoesOffline());
     } else {
       this.carregarInformacoesOffline();
     }
@@ -42,7 +43,17 @@ class FURB extends Component {
     console.log('Erro ao recuperar os dados');
 
     getItem('FURB').then((response) => {
-      this.carregarInformacoes(JSON.parse(response.value), response.date);
+      if (response) {
+        this.carregarInformacoes(JSON.parse(response.value), response.date);
+      } else if (this.props.isConnected) {
+        Alert.alert('Nenhum Registro foi encontrado!');
+        this.setState({ visible: false });
+        Actions.pop();
+      } else {
+        Alert.alert('Ops! Parece que você está sem internet.');
+        this.setState({ visible: false });
+        Actions.pop();
+      }
     });
   }
 

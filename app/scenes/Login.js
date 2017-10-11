@@ -9,27 +9,44 @@ import {
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
+import Loading from '../components/Loading';
 import URL_API from '../lib/Configuracoes';
 import { saveItem, removeItem } from '../lib/Util';
 import { modificaToken, modificaEmail } from '../actions/AutenticacaoActions';
 
 class Login extends Component {
+	constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: false
+    };
+	}
+
   entrar() {
-    axios.get(`${URL_API}Login/${this.props.email}`)
-    .then(response => {
-      if (response.data.token) {
-        saveItem('email', this.props.email);
-        saveItem('token', response.data.token);
-        this.props.modificaToken(true);
-        Actions.pop();
-      } else {
-        removeItem('email');
-        removeItem('token');
-        this.props.modificaToken(false);
-        Alert.alert('E-mail inválido', 'Insira um e-mail cadastrado no evento Interação FURB.');
-      }
-    })
-    .catch(() => console.log('Erro ao recuperar os dados'));
+    if (this.props.isConnected) {
+      this.setState({ visible: true });
+
+      axios.get(`${URL_API}Login/${this.props.email}`)
+      .then(response => {
+        if (response.data.token) {
+          saveItem('email', this.props.email);
+          saveItem('token', response.data.token);
+          this.props.modificaToken(true);
+          this.setState({ visible: false });
+          Actions.pop();
+        } else {
+          removeItem('email');
+          removeItem('token');
+          this.props.modificaToken(false);
+          this.setState({ visible: false });
+          Alert.alert('E-mail inválido', 'Insira um e-mail cadastrado no evento Interação FURB.');
+        }
+      })
+      .catch(() => console.log('Erro ao recuperar os dados'));
+    } else {
+      Alert.alert('Ops! Parece que você está sem internet.');
+    }    
   }
 
 	render() {
@@ -37,6 +54,7 @@ class Login extends Component {
       <View
         style={styles.container}
       >
+        <Loading visible={this.state.visible} />
         <TextInput
           onChangeText={email => this.props.modificaEmail(email)}
           keyboardType="email-address"
@@ -64,7 +82,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => (
   {
-    email: state.AutenticacaoReducer.email
+    email: state.AutenticacaoReducer.email,
+    isConnected: state.ConnectionReducer.isConnected
   }
 );
 

@@ -15,6 +15,8 @@ const LogoFurb = require('../images/logo-furb.png');
 
 class Menu extends Component {
   sair() {
+    removeItem('programacaoCursoUsuario');
+    removeItem('programacaoUsuario');
     removeItem('email');
     removeItem('token');
     this.props.modificaToken(false);
