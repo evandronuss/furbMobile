@@ -9,8 +9,24 @@ import {
 
 class Checkin extends Component {
   render() {
-    return (
-      <View style={styles.container}>
+		if (this.props.isMinistrante) {
+			return (
+				<View style={styles.container}>
+					<Text style={styles.texto}>
+						Realize Check-in nas Oficinas que você visitar apresentando este QRCode.
+					</Text>
+					<View style={styles.QRCode}>
+						<QRCode
+							size={200}
+							value={this.props.email}
+						/>
+					</View>
+				</View>
+			);
+		}
+
+		return (
+			<View style={styles.container}>
 				<Text style={styles.texto}>
 					Realize Check-in nas Oficinas que você visitar apresentando este QRCode.
 				</Text>
@@ -20,8 +36,8 @@ class Checkin extends Component {
 						value={this.props.email}
 					/>
 				</View>
-      </View>
-    );
+			</View>
+		);
   }
 }
 
@@ -43,7 +59,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => (
   {
-    email: state.AutenticacaoReducer.email
+		email: state.AutenticacaoReducer.email,
+		isMinistrante: state.AutenticacaoReducer.isMinistrante
   }
 );
 

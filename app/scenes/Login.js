@@ -12,7 +12,11 @@ import { Actions } from 'react-native-router-flux';
 import Loading from '../components/Loading';
 import URL_API from '../lib/Configuracoes';
 import { saveItem, removeItem } from '../lib/Util';
-import { modificaToken, modificaEmail } from '../actions/AutenticacaoActions';
+import {
+  modificaToken,
+  modificaEmail,
+  modificaIsMinistrante
+} from '../actions/AutenticacaoActions';
 
 class Login extends Component {
 	constructor(props) {
@@ -32,6 +36,7 @@ class Login extends Component {
         if (response.data.token) {
           saveItem('email', this.props.email);
           saveItem('token', response.data.token);
+          this.props.modificaIsMinistrante(true);
           this.props.modificaToken(true);
           this.setState({ visible: false });
           Actions.pop();
@@ -87,4 +92,8 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps, { modificaToken, modificaEmail })(Login);
+export default connect(mapStateToProps, {
+  modificaToken,
+  modificaEmail,
+  modificaIsMinistrante
+})(Login);

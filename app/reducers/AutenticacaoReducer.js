@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   email: '',
-  hasToken: false
+  hasToken: false,
+  isMinistrante: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +17,13 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         email: action.payload
+      };
+    }
+
+    case 'modifica_isMinistrante': {
+      return {
+        ...state,
+        isMinistrante: action.payload
       };
     }
 
