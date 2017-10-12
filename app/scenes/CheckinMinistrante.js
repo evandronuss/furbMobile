@@ -5,7 +5,6 @@ import {
   Alert,
   Picker,
   StyleSheet,
-  Text,
   View
 } from 'react-native';
 
@@ -14,15 +13,22 @@ class CheckinMinistrante extends Component {
     super(props);
 
     this.state = {
-      language: ''
+      language: '',
+      timeoutId: 0
     };
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.state.timeoutId);
   }
 
   onRead(e) {
     const that = this;
     Alert.alert('', e.data, [{
       text: 'OK',
-      onPress: () => setTimeout(that.scanner.reactivate.bind(that.scanner), 3000)
+      onPress: () => this.setState({
+        timeoutId: setTimeout(that.scanner.reactivate.bind(that.scanner), 3000)
+      })
     }]);
   }
 
