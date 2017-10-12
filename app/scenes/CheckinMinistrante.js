@@ -3,12 +3,20 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import { connect } from 'react-redux';
 import {
   Alert,
-	StyleSheet,
-	View
+  Picker,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
 
 class CheckinMinistrante extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      language: ''
+    };
+  }
 
   onRead(e) {
     const that = this;
@@ -18,32 +26,52 @@ class CheckinMinistrante extends Component {
     }]);
   }
 
+  topContent() {
+    return (
+      <View
+        style={styles.container}
+      >
+        <Picker
+          style={styles.picker}
+          prompt="Cursos"
+          selectedValue={this.state.language}
+          onValueChange={(itemValue, itemIndex) => this.setState({ language: itemValue })}
+        >
+          <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker>
+        <Picker
+          style={styles.picker}
+          prompt="Oficinas"
+          selectedValue={this.state.language}
+          onValueChange={(itemValue, itemIndex) => this.setState({ language: itemValue })}
+        >
+          <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker>
+      </View>
+    );
+  }
+
   render() {
 		return (
-			<View style={styles.container}>
-				<QRCodeScanner
-          ref={(node) => { this.scanner = node; }}
-          onRead={this.onRead.bind(this)}
-				/>
-			</View>
+      <QRCodeScanner
+        ref={(node) => { this.scanner = node; }}
+        onRead={this.onRead.bind(this)}
+        topContent={this.topContent()}
+      />
 		);
   }
 }
 
 const styles = StyleSheet.create({
 	container: {
-			flex: 1,
-			alignItems: 'center',
-			padding: 30
-	},
-	texto: {
-		fontWeight: 'bold',
-		fontSize: 16,
-		textAlign: 'center'
-	},
-	QRCode: {
-		marginTop: 60
-	}
+    flex: 1,
+    alignSelf: 'stretch'
+  },
+  picker: {
+    flex: 1
+  }
 });
 
 const mapStateToProps = state => (
