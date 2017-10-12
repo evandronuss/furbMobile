@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { Icon } from 'react-native-elements';
 import Menu from './components/Menu';
 import Principal from './scenes/Principal';
@@ -26,7 +27,9 @@ import Checkin from './scenes/Checkin';
 import CheckinMinistrante from './scenes/CheckinMinistrante';
 import { modificaToken, modificaEmail } from './actions/AutenticacaoActions';
 import { alteraStatusConexao } from './actions/ConnectionActions';
-import { getItem } from './lib/Util';
+import { apagarPresencas, modificaPresencas } from './actions/CheckinActions';
+import { getItem, isArray } from './lib/Util';
+import URL_API from './lib/Configuracoes';
 
 class App extends Component {
   componentWillMount() {
@@ -35,6 +38,12 @@ class App extends Component {
     });
     getItem('token').then((response) => {
       this.props.modificaToken(response && response.value !== null);
+    });
+    getItem('Presencas').then((response) => {
+      if (response && isArray(response.value)) {
+        this.props.modificaPresencas(response.value);
+        this.enviarPresencasArmazenadas();
+      }
     });
   }
 
@@ -52,6 +61,19 @@ class App extends Component {
 
   handleConnectionChange(isConnected) {
     this.props.alteraStatusConexao(isConnected);
+
+    if (isConnected) {
+      this.enviarPresencasArmazenadas();
+    }
+  }
+
+  enviarPresencasArmazenadas() {
+    if (this.props.presencas.length > 0) {
+      const presencas = this.props.presencas;
+
+      axios.post(`${URL_API}Checkin`, presencas)
+        .then(() => this.props.apagarPresencas(presencas));
+    }
   }
 
   openDrawer() {
@@ -183,4 +205,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(null, { modificaToken, modificaEmail, alteraStatusConexao })(App);
+const mapStateToProps = state => (
+  {
+		presencas: state.CheckinReducer.presencas
+  }
+);
+
+export default connect(mapStateToProps, {
+  modificaToken,
+  modificaEmail,
+  alteraStatusConexao,
+  apagarPresencas,
+  modificaPresencas
+})(App);

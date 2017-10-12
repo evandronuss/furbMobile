@@ -7,11 +7,13 @@ import {
   Alert,
   Picker,
   StyleSheet,
+  Text,
   View
 } from 'react-native';
 import URL_API from '../lib/Configuracoes';
 import MessageDate from '../components/MessageDate';
 import { saveItem, getItem, isArray } from '../lib/Util';
+import { adicionarPresenca } from '../actions/CheckinActions';
 
 class CheckinMinistrante extends Component {
   constructor(props) {
@@ -43,6 +45,19 @@ class CheckinMinistrante extends Component {
 
   onRead(e) {
     const that = this;
+    const presenca = {
+      email: this.props.email,
+      curso: this.state.cursoSelecionado,
+      oficina: this.state.oficinaSelecionada
+    };
+
+    if (this.props.isConnected) {
+      axios.post(`${URL_API}Checkin`, [presenca])
+        .catch(() => this.props.adicionarPresenca(presenca));  
+    } else {
+      this.props.adicionarPresenca(presenca);
+    }
+
     Alert.alert('', e.data, [{
       text: 'OK',
       onPress: () => this.setState({
@@ -138,12 +153,23 @@ class CheckinMinistrante extends Component {
     );
   }
 
+  bottomContent() {
+    return (
+      <View style={styles.container}>
+        {isArray(this.props.presencas) && this.props.presencas.length > 0 && <Text>
+          Existem Presenças salvas no celular que serão sincronizadas quando houver conexão.
+        </Text>}
+      </View>
+    );
+  }
+
   render() {
 		return (
       <QRCodeScanner
         ref={(node) => { this.scanner = node; }}
         onRead={this.onRead.bind(this)}
         topContent={this.topContent()}
+        bottomContent={this.bottomContent()}
       />
 		);
   }
@@ -162,8 +188,9 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => (
   {
 		email: state.AutenticacaoReducer.email,
-    isConnected: state.ConnectionReducer.isConnected
+    isConnected: state.ConnectionReducer.isConnected,
+		presencas: state.CheckinReducer.presencas
   }
 );
 
-export default connect(mapStateToProps, null)(CheckinMinistrante);
+export default connect(mapStateToProps, { adicionarPresenca })(CheckinMinistrante);
