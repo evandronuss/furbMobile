@@ -23,6 +23,7 @@ import Interacao from './scenes/Interacao';
 import Programacao from './scenes/Programacao';
 import ProgramacaoCurso from './scenes/ProgramacaoCurso';
 import Checkin from './scenes/Checkin';
+import CheckinMinistrante from './scenes/CheckinMinistrante';
 import { modificaToken, modificaEmail } from './actions/AutenticacaoActions';
 import { alteraStatusConexao } from './actions/ConnectionActions';
 import { getItem } from './lib/Util';
@@ -38,11 +39,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    NetInfo.isConnected.addEventListener('change', (isConnected) => this.handleConnectionChange(isConnected));
+    NetInfo.isConnected.addEventListener('change', (isConnected) =>
+      this.handleConnectionChange(isConnected)
+    );
   }
 
   componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener('change', (isConnected) => this.handleConnectionChange(isConnected));
+    NetInfo.isConnected.removeEventListener('change', (isConnected) =>
+      this.handleConnectionChange(isConnected)
+    );
   }
 
   handleConnectionChange(isConnected) {
@@ -153,6 +158,12 @@ class App extends Component {
             <Scene
               key='checkin'
               component={Checkin}
+              title='Check-in'
+              onEnter={this.closeDrawer.bind(this)}
+            />
+            <Scene
+              key='checkinMinistrante'
+              component={CheckinMinistrante}
               title='Check-in'
               onEnter={this.closeDrawer.bind(this)}
             />

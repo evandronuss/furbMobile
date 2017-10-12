@@ -39,7 +39,7 @@ class Menu extends Component {
           {this.props.hasToken && <ItemMenu
             icon='location-on'
             text='Check-in'
-            onPress={Actions.checkin}
+            onPress={this.props.isMinistrante ? Actions.checkinMinistrante : Actions.checkin}
           />}
           {this.props.hasToken && <ItemMenu
             icon='settings'
@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => (
   {
     hasToken: state.AutenticacaoReducer.hasToken,
-    email: state.AutenticacaoReducer.email
+    email: state.AutenticacaoReducer.email,
+    isMinistrante: state.AutenticacaoReducer.isMinistrante
   }
 );
 

@@ -36,7 +36,7 @@ class Login extends Component {
         if (response.data.token) {
           saveItem('email', this.props.email);
           saveItem('token', response.data.token);
-          this.props.modificaIsMinistrante(true);
+          //this.props.modificaIsMinistrante(true);
           this.props.modificaToken(true);
           this.setState({ visible: false });
           Actions.pop();
@@ -45,12 +45,12 @@ class Login extends Component {
           removeItem('token');
           this.props.modificaToken(false);
           this.setState({ visible: false });
-          Alert.alert('E-mail inválido', 'Insira um e-mail cadastrado no evento Interação FURB.');
+          Alert.alert('', 'E-mail inválido', 'Insira um e-mail cadastrado no evento Interação FURB.');
         }
       })
       .catch(() => console.log('Erro ao recuperar os dados'));
     } else {
-      Alert.alert('Ops! Parece que você está sem internet.');
+      Alert.alert('', 'Ops! Parece que você está sem internet.');
     }    
   }
 

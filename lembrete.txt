@@ -26,3 +26,7 @@ npm install --save prop-types
 npm install --save redux
 npm install --save react-redux
 npm install react-native-qrcode --save
+npm install react-native-camera --save
+react-native link react-native-camera
+npm install react-native-qrcode-scanner --save
+react-native link react-native-qrcode-scanner

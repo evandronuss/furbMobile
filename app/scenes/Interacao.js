@@ -47,11 +47,11 @@ class Interacao extends Component {
       if (response) {
         this.carregarInformacoes(JSON.parse(response.value), response.date);
       } else if (this.props.isConnected) {
-        Alert.alert('Nenhum Registro foi encontrado!');
+        Alert.alert('', 'Nenhum Registro foi encontrado!');
         this.setState({ visible: false });
         Actions.pop();
       } else {
-        Alert.alert('Ops! Parece que você está sem internet.');
+        Alert.alert('', 'Ops! Parece que você está sem internet.');
         this.setState({ visible: false });
         Actions.pop();
       }
@@ -69,11 +69,11 @@ class Interacao extends Component {
         date
       });
     } else if (this.props.isConnected) {
-      Alert.alert('Ops! Ocorreu um erro ao carregar os dados.');
+      Alert.alert('', 'Ops! Ocorreu um erro ao carregar os dados.');
       this.setState({ visible: false });
       Actions.pop();
     } else {
-      Alert.alert('Ops! Parece que você está sem internet.');
+      Alert.alert('', 'Ops! Parece que você está sem internet.');
       this.setState({ visible: false });
       Actions.pop();
     }

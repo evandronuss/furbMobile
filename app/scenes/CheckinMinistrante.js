@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import QRCode from 'react-native-qrcode';
+import QRCodeScanner from 'react-native-qrcode-scanner';
 import { connect } from 'react-redux';
 import {
+  Alert,
 	StyleSheet,
-	Text,
 	View
 } from 'react-native';
 
-class Checkin extends Component {
+class CheckinMinistrante extends Component {
+
+
+  onRead(e) {
+    const that = this;
+    Alert.alert('', e.data, [{
+      text: 'OK',
+      onPress: () => setTimeout(that.scanner.reactivate.bind(that.scanner), 3000)
+    }]);
+  }
+
   render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.texto}>
-					Realize Check-in nas Oficinas que você visitar apresentando este QRCode.
-				</Text>
-				<View style={styles.QRCode}>
-					<QRCode
-						size={200}
-						value={this.props.email}
-					/>
-				</View>
+				<QRCodeScanner
+          ref={(node) => { this.scanner = node; }}
+          onRead={this.onRead.bind(this)}
+				/>
 			</View>
 		);
   }
@@ -47,4 +52,4 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps, null)(Checkin);
+export default connect(mapStateToProps, null)(CheckinMinistrante);

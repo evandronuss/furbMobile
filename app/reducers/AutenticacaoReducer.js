@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   email: '',
   hasToken: false,
-  isMinistrante: false
+  isMinistrante: true
 };
 
 export default (state = INITIAL_STATE, action) => {
