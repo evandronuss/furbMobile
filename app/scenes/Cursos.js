@@ -6,7 +6,7 @@ import axios from 'axios';
 import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
-import { removerObjetosDuplicados, ordenarObjetos, saveItem, getItem, isObject } from '../lib/Util';
+import { removerObjetosDuplicados, ordenarObjetos, saveItem, getItem, isArray } from '../lib/Util';
 import { URL_SITE } from '../lib/Configuracoes';
 
 class Cursos extends Component {
@@ -55,7 +55,7 @@ class Cursos extends Component {
   }
 
   carregarInformacoes(response, date) {
-    if (response && isObject(response.data)) {
+    if (response && isArray(response.data)) {
       this.setState({
         listaCards: this.filtrarDadosExibir(response.data),
         visible: false,

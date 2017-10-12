@@ -7,7 +7,7 @@ import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import URL_API, { URL_SITE } from '../lib/Configuracoes';
-import { formatMoney, saveItem, getItem } from '../lib/Util';
+import { formatMoney, saveItem, getItem, isObject } from '../lib/Util';
 
 class Curso extends Component {
 	constructor(props) {
@@ -68,7 +68,7 @@ class Curso extends Component {
   }
 
   carregarInformacoes(response, date) {
-    if (response && response.panels && response.contentPanels) {
+    if (isObject(response)) {
       this.setState({
         panels: response.panels,
         contentPanels: response.contentPanels,

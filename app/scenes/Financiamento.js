@@ -7,7 +7,7 @@ import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import { URL_SITE } from '../lib/Configuracoes';
-import { saveItem, getItem } from '../lib/Util';
+import { saveItem, getItem, isObject } from '../lib/Util';
 
 class Financiamento extends Component {
 	constructor(props) {
@@ -56,7 +56,7 @@ class Financiamento extends Component {
   }
 
   carregarInformacoes(response, date) {
-    if (response && response.data && response.data.panels && response.data.contentPanels) {
+    if (response && isObject(response.data)) {
       this.setState({
         panels: response.data.panels,
         contentPanels: response.data.contentPanels,

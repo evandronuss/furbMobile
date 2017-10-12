@@ -8,7 +8,7 @@ import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import { URL_SITE } from '../lib/Configuracoes';
-import { saveItem, getItem } from '../lib/Util';
+import { saveItem, getItem, isObject } from '../lib/Util';
 
 class FURB extends Component {
   constructor(props) {
@@ -58,13 +58,7 @@ class FURB extends Component {
   }
 
   carregarInformacoes(response, date) {
-    if (
-      response &&
-      response.date &&
-      response.data.content &&
-      response.data.panels &&
-      response.data.contentPanels
-    ) {
+    if (response && isObject(response.data)) {
       this.setState({
         content: response.data.content,
         panels: response.data.panels,

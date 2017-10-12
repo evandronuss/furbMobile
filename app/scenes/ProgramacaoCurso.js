@@ -7,7 +7,7 @@ import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import URL_API from '../lib/Configuracoes';
-import { gerarNomeArquivo, saveItem, getItem } from '../lib/Util';
+import { gerarNomeArquivo, saveItem, getItem, isObject } from '../lib/Util';
 
 class ProgramacaoCurso extends Component {
 	constructor(props) {
@@ -77,7 +77,7 @@ class ProgramacaoCurso extends Component {
   }
 
   carregarInformacoes(response, date) {
-    if (response && response.panels && response.contentPanels) {
+    if (isObject(response)) {
       this.setState({
         panels: response.panels,
         contentPanels: response.contentPanels,

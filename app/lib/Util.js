@@ -200,6 +200,9 @@ const formatMoney = (valor) =>
 const isObject = (object) =>
   Object.prototype.toString.call(object) === '[object Object]';
 
+  const isArray = (object) =>
+  Object.prototype.toString.call(object) === '[object Array]';
+
 export {
     removerAcentos,
     gerarNomeArquivo,
@@ -211,5 +214,6 @@ export {
     getItem,
     removeItem,
     formatMoney,
-    isObject
+    isObject,
+    isArray
 };

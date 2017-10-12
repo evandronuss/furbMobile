@@ -8,7 +8,7 @@ import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import URL_API from '../lib/Configuracoes';
-import { saveItem, getItem } from '../lib/Util';
+import { saveItem, getItem, isObject } from '../lib/Util';
 
 class Interacao extends Component {
 	constructor(props) {
@@ -59,14 +59,7 @@ class Interacao extends Component {
   }
 
   carregarInformacoes(response, date) {
-    if (
-      response &&
-      response.data &&
-      response.data.content &&
-      response.data.programacao &&
-      response.data.panels &&
-      response.data.contentPanels
-    ) {
+    if (response && isObject(response.data)) {
       this.setState({
         content: response.data.content,
         programacao: response.data.programacao,

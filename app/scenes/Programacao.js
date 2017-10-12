@@ -7,7 +7,7 @@ import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import URL_API from '../lib/Configuracoes';
-import { saveItem, getItem } from '../lib/Util';
+import { saveItem, getItem, isObject } from '../lib/Util';
 
 class Programacao extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class Programacao extends Component {
   }
 
   carregarInformacoes(response, date) {
-    if (response && response.data && response.data.data) {
+    if (response && isObject(response.data)) {
       this.setState({
         listaCards: response.data.data,
         visible: false,
