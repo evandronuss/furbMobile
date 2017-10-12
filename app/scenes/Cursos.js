@@ -6,7 +6,7 @@ import axios from 'axios';
 import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
-import { removerObjetosDuplicados, ordenarObjetos, saveItem, getItem } from '../lib/Util';
+import { removerObjetosDuplicados, ordenarObjetos, saveItem, getItem, isObject } from '../lib/Util';
 import { URL_SITE } from '../lib/Configuracoes';
 
 class Cursos extends Component {
@@ -55,11 +55,21 @@ class Cursos extends Component {
   }
 
   carregarInformacoes(response, date) {
-    this.setState({
-      listaCards: this.filtrarDadosExibir(response.data),
-      visible: false,
-      date
-    });
+    if (response && isObject(response.data)) {
+      this.setState({
+        listaCards: this.filtrarDadosExibir(response.data),
+        visible: false,
+        date
+      });
+    } else if (this.props.isConnected) {
+      Alert.alert('Ops! Ocorreu um erro ao carregar os dados.');
+      this.setState({ visible: false });
+      Actions.pop();
+    } else {
+      Alert.alert('Ops! Parece que você está sem internet.');
+      this.setState({ visible: false });
+      Actions.pop();
+    }
   }
   
   filtrarDadosExibir(data) {

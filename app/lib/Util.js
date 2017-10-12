@@ -197,6 +197,9 @@ const removeItem = async (item) => {
 const formatMoney = (valor) => 
   valor.toString().replace(/\./g, ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
+const isObject = (object) =>
+  Object.prototype.toString.call(object) === '[object Object]';
+
 export {
     removerAcentos,
     gerarNomeArquivo,
@@ -207,5 +210,6 @@ export {
     saveItem,
     getItem,
     removeItem,
-    formatMoney
+    formatMoney,
+    isObject
 };

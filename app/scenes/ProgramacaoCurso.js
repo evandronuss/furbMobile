@@ -77,12 +77,22 @@ class ProgramacaoCurso extends Component {
   }
 
   carregarInformacoes(response, date) {
-    this.setState({
-      panels: response.panels,
-      contentPanels: response.contentPanels,
-      visible: false,
-      date
-    });
+    if (response && response.panels && response.contentPanels) {
+      this.setState({
+        panels: response.panels,
+        contentPanels: response.contentPanels,
+        visible: false,
+        date
+      });
+    } else if (this.props.isConnected) {
+      Alert.alert('Ops! Ocorreu um erro ao carregar os dados.');
+      this.setState({ visible: false });
+      Actions.pop();
+    } else {
+      Alert.alert('Ops! Parece que você está sem internet.');
+      this.setState({ visible: false });
+      Actions.pop();
+    }
   }  
   
   adicionarLocal(programacaoResponse, localResponse) {

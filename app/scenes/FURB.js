@@ -58,13 +58,29 @@ class FURB extends Component {
   }
 
   carregarInformacoes(response, date) {
-    this.setState({
-      content: response.data.content,
-      panels: response.data.panels,
-      contentPanels: response.data.contentPanels,
-      visible: false,
-      date
-    });
+    if (
+      response &&
+      response.date &&
+      response.data.content &&
+      response.data.panels &&
+      response.data.contentPanels
+    ) {
+      this.setState({
+        content: response.data.content,
+        panels: response.data.panels,
+        contentPanels: response.data.contentPanels,
+        visible: false,
+        date
+      });
+    } else if (this.props.isConnected) {
+      Alert.alert('Ops! Ocorreu um erro ao carregar os dados.');
+      this.setState({ visible: false });
+      Actions.pop();
+    } else {
+      Alert.alert('Ops! Parece que você está sem internet.');
+      this.setState({ visible: false });
+      Actions.pop();
+    }
   }
 
 	render() {
