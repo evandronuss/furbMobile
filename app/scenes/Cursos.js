@@ -7,7 +7,7 @@ import ListaCard from '../components/ListaCard';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import { removerObjetosDuplicados, ordenarObjetos, saveItem, getItem, isArray } from '../lib/Util';
-import { URL_SITE } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 
 class Cursos extends Component {
   constructor(props) {
@@ -22,8 +22,8 @@ class Cursos extends Component {
 
   componentWillMount() {
     if (this.props.isConnected) {
-      axios.get(`${URL_SITE}cursos.json`)
-        .then(response => this.carregarInformacoesOnline(response))
+      axios.get(`${URL_API}cursos`)
+        .then(response => this.carregarInformacoesOnline(response.data))
         .catch(() => this.carregarInformacoesOffline());
     } else {
       this.carregarInformacoesOffline();
