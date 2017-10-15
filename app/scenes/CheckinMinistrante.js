@@ -5,15 +5,17 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {
   Alert,
+  Button,
   Picker,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 import URL_API from '../lib/Configuracoes';
+import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
 import { saveItem, getItem, isArray } from '../lib/Util';
-import { adicionarPresenca } from '../actions/CheckinActions';
+import { adicionarPresenca, apagarPresencas } from '../actions/CheckinActions';
 
 class CheckinMinistrante extends Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class CheckinMinistrante extends Component {
       cursos: [],
       oficinas: [],
       timeoutId: 0,
+      visible: true,
       date: ''
     };
   }
@@ -114,11 +117,33 @@ class CheckinMinistrante extends Component {
     }
   }
 
+  enviarPresencasArmazenadas() {
+    if (this.props.presencas.length > 0) {
+      const presencas = this.props.presencas;
+
+      this.setState({
+        visible: true,
+        textContent: 'Enviando...'
+      });
+
+      axios.post(`${URL_API}Checkin`, presencas)
+        .then(() => {
+          this.setState({
+            textContent: undefined,
+            visible: false
+          });
+
+          this.props.apagarPresencas(presencas);
+        });
+    }
+  }
+
   topContent() {
     return (
       <View
         style={styles.container}
       >
+        <Loading textContent={this.state.textContent} visible={this.state.visible} />
         <MessageDate date={this.state.date} />
         <Picker
           style={styles.picker}
@@ -155,9 +180,28 @@ class CheckinMinistrante extends Component {
 
   bottomContent() {
     return (
-      <View style={styles.container}>
-        {isArray(this.props.presencas) && this.props.presencas.length > 0 && <Text>
-          Existem Presenças salvas no celular que serão sincronizadas quando houver conexão.
+      <View style={[styles.container, this.props.isConnected ? styles.containerBottom : undefined]}>
+        {this.props.isConnected &&
+        isArray(this.props.presencas) &&
+        this.props.presencas.length > 0 &&
+        <Button
+          onPress={this.enviarPresencasArmazenadas.bind(this)}
+          color="#00549A"
+          title="Enviar presenças ao servidor"
+        />}
+        {this.props.isConnected &&
+        isArray(this.props.presencas) &&
+        this.props.presencas.length > 0 &&
+        <Text style={styles.text}>
+          Se você não enviar as presenças ao servidor elas serão enviadas automaticamente
+          quando houver conexão.
+        </Text>}
+        {!this.props.isConnected &&
+        isArray(this.props.presencas) &&
+        this.props.presencas.length > 0 &&
+        <Text style={styles.text}>
+          Existem presenças armazenadas localmente que serão enviadas automaticamente ao servidor
+          quando houver conexão.
         </Text>}
       </View>
     );
@@ -180,8 +224,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch'
   },
+	containerBottom: {
+    paddingTop: 5
+  },
   picker: {
     flex: 1
+  },
+  text: {
+    fontSize: 11,
+    color: '#6D6D72',
+    margin: 5
   }
 });
 
@@ -193,4 +245,4 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps, { adicionarPresenca })(CheckinMinistrante);
+export default connect(mapStateToProps, { adicionarPresenca, apagarPresencas })(CheckinMinistrante);

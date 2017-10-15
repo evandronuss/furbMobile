@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AsyncStorage,
   DrawerLayoutAndroid,
   StyleSheet,
   TouchableHighlight,
@@ -11,6 +10,8 @@ import { Router, Scene } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Icon } from 'react-native-elements';
+import Moment from 'moment';
+import PushNotification from 'react-native-push-notification';
 import Menu from './components/Menu';
 import Principal from './scenes/Principal';
 import Login from './scenes/Login';
@@ -42,9 +43,16 @@ class App extends Component {
     getItem('Presencas').then((response) => {
       if (response && isArray(response.value)) {
         this.props.modificaPresencas(response.value);
-        this.enviarPresencasArmazenadas();
+
+        if (this.props.isConnected) {
+          this.enviarPresencasArmazenadas();
+        }
       }
     });
+
+    if (this.props.isConnected) {
+      this.carregarNotificacoes();
+    }
   }
 
   componentDidMount() {
@@ -63,6 +71,7 @@ class App extends Component {
     this.props.alteraStatusConexao(isConnected);
 
     if (isConnected) {
+      this.carregarNotificacoes();
       this.enviarPresencasArmazenadas();
     }
   }
@@ -75,6 +84,29 @@ class App extends Component {
         .then(() => this.props.apagarPresencas(presencas));
     }
   }
+
+  carregarNotificacoes() {
+    axios.get(`${URL_API}notificacao`)
+      .then(response => { this.configurarNotificacoes(response.data.data); })
+      .catch(() => console.log('Erro ao recuperar os dados'));
+  }
+
+  configurarNotificacoes(notificacoes) {
+    PushNotification.cancelAllLocalNotifications();
+
+    const dataAtual = new Date();
+
+    for (const i in notificacoes) {
+      const dataNotificacao = Moment(notificacoes[i].date, 'DD-MM-YYYY h:mm').toDate();
+
+      if (dataNotificacao > dataAtual) {
+        PushNotification.localNotificationSchedule({
+          message: notificacoes[i].message,
+          date: dataNotificacao
+        });
+      }
+    }
+  }  
 
   openDrawer() {
     this.drawer.openDrawer();
@@ -207,6 +239,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => (
   {
+    isConnected: state.ConnectionReducer.isConnected,
 		presencas: state.CheckinReducer.presencas
   }
 );

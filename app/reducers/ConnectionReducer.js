@@ -5,7 +5,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'altera_status_conexao': {
-      console.log('conexão: ' + action.payload);
+      console.log(`conexão: ${action.payload}`);
       return {
         ...state,
         isConnected: action.payload

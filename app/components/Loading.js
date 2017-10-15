@@ -6,7 +6,7 @@ export default class Loading extends Component {
 		return (
 			<Spinner
 				visible={this.props.visible}
-				textContent={'Carregando...'}
+				textContent={this.props.textContent || 'Carregando...'}
 				textStyle={{ color: '#FFF', marginTop: -50 }}
 				overlayColor='rgba(0, 0, 0, 0.60)'
 				size='large'
