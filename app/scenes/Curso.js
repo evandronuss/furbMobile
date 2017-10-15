@@ -6,7 +6,7 @@ import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
-import URL_API, { URL_SITE } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 import { formatMoney, saveItem, getItem, isObject } from '../lib/Util';
 
 class Curso extends Component {
@@ -25,7 +25,7 @@ class Curso extends Component {
     if (this.props.isConnected) {
       axios.all([
         axios.get(`${URL_API}Curso/GetPaneisCurso`),
-        axios.get(`${URL_SITE}cursos/informacoes/${this.props.id}.json`),
+        axios.get(`${URL_API}Curso/GetInformacoesCurso/${this.props.id}`),
         axios.get(`${URL_API}Curso/GetMensalidadeCurso/${this.props.id}`)
       ])
       .then(axios.spread((paineisResponse, informacaoResponse, mensalidadeResponse) => {
