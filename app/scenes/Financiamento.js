@@ -6,7 +6,7 @@ import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
-import { URL_API } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 import { saveItem, getItem, isObject } from '../lib/Util';
 
 class Financiamento extends Component {
