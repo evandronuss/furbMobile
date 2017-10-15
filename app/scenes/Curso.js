@@ -24,13 +24,13 @@ class Curso extends Component {
   componentWillMount() {
     if (this.props.isConnected) {
       axios.all([
-        axios.get(`${URL_SITE}cursos/paineis_cursos.json`),
+        axios.get(`${URL_API}Curso/GetPaneisCurso`),
         axios.get(`${URL_SITE}cursos/informacoes/${this.props.id}.json`),
         axios.get(`${URL_API}Curso/GetMensalidadeCurso/${this.props.id}`)
       ])
       .then(axios.spread((paineisResponse, informacaoResponse, mensalidadeResponse) => {
         const informacoesCursos = this.adicionarMensalidade(
-          paineisResponse,
+          paineisResponse.data,
           informacaoResponse,
           mensalidadeResponse
         );
