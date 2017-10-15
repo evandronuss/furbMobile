@@ -6,7 +6,7 @@ import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
-import { URL_SITE } from '../lib/Configuracoes';
+import { URL_API } from '../lib/Configuracoes';
 import { saveItem, getItem, isObject } from '../lib/Util';
 
 class Financiamento extends Component {
@@ -23,7 +23,7 @@ class Financiamento extends Component {
 
   componentWillMount() {
     if (this.props.isConnected) {
-      axios.get(`${URL_SITE}financiamento.json`)
+      axios.get(`${URL_API}financiamento`)
         .then(response => this.carregarInformacoesOnline(response))
         .catch(() => this.carregarInformacoesOffline());
     } else {
