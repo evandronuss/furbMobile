@@ -49,7 +49,7 @@ class CheckinMinistrante extends Component {
   onRead(e) {
     const that = this;
     const presenca = {
-      email: this.props.email,
+      email: e.data,
       curso: this.state.cursoSelecionado,
       oficina: this.state.oficinaSelecionada
     };
