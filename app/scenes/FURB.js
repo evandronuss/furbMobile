@@ -7,7 +7,7 @@ import axios from 'axios';
 import Panels from '../components/Panels';
 import Loading from '../components/Loading';
 import MessageDate from '../components/MessageDate';
-import { URL_SITE } from '../lib/Configuracoes';
+import URL_API from '../lib/Configuracoes';
 import { saveItem, getItem, isObject } from '../lib/Util';
 
 class FURB extends Component {
@@ -25,7 +25,7 @@ class FURB extends Component {
 
   componentWillMount() {
     if (this.props.isConnected) {
-      axios.get(`${URL_SITE}furb.json`)
+      axios.get(`${URL_API}furb`)
         .then(response => this.carregarInformacoesOnline(response))
         .catch(() => this.carregarInformacoesOffline());
     } else {
