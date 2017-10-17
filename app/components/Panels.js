@@ -106,10 +106,7 @@ export default class Panels extends Component {
   renderContentPanel(section, i) {
     if (
       !this.props.contentPanels ||
-      (
-        !this.props.contentPanels[section.ref] &&
-        !this.props.contentPanels[i].contentPanel
-      )
+      !this.props.contentPanels[section.ref]
     ) {
       return;
     }
@@ -122,10 +119,7 @@ export default class Panels extends Component {
           undefined
         )]}
 			>
-        {(
-          this.props.contentPanels[section.ref] ||
-          this.props.contentPanels[i].contentPanel
-        ).map((item, index) => {
+        {(this.props.contentPanels[section.ref]).map((item, index) => {
           const key = `contentPanel_${i}_${index}`;
 
           if (item.horarios) {
