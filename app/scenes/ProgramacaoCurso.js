@@ -96,47 +96,35 @@ class ProgramacaoCurso extends Component {
   }  
   
   adicionarLocal(programacaoResponse, localResponse) {
-    const panels = programacaoResponse.data.panels;
     const contentPanels = programacaoResponse.data.contentPanels;
     const localData = localResponse.data;
 
     for (const id in localData) {
-      if (localData[id] && localData[id].horarios) {
-        for (let i = 0; i < panels.length; i++) {
+      if (localData[id] && localData[id].horarios && contentPanels[id]) {
+        for (let x = 0; x < localData[id].horarios.length; x++) {
           if (
-            gerarNomeArquivo(panels[i].title) === id &&
-            contentPanels[i] &&
-            contentPanels[i].contentPanel
+            localData[id].horarios[x] &&
+            localData[id].horarios[x].hora &&
+            localData[id].horarios[x].hora.length >= 5
           ) {
-            for (let x = 0; x < localData[id].horarios.length; x++) {
-              if (
-                localData[id].horarios[x] &&
-                localData[id].horarios[x].hora &&
-                localData[id].horarios[x].hora.length >= 5
-              ) {
-                const localHora = localData[id].horarios[x];
+            const localHora = localData[id].horarios[x];
 
-                for (let y = 0; y < contentPanels[i].contentPanel.length; y++) {
+            for (let y = 0; y < contentPanels[id].length; y++) {
+              if (contentPanels[id][y] && contentPanels[id][y].horarios) {
+                const contentPanel = contentPanels[id][y];
+
+                for (let z = 0; z < contentPanel.horarios.length; z++) {
                   if (
-                    contentPanels[i].contentPanel[y] &&
-                    contentPanels[i].contentPanel[y].horarios
+                    contentPanel.horarios[z] &&
+                    contentPanel.horarios[z].horario &&
+                    contentPanel.horarios[z].horario.length >= 5
                   ) {
-                    const contentPanel = contentPanels[i].contentPanel[y];
-
-                    for (let z = 0; z < contentPanel.horarios.length; z++) {
-                      if (
-                        contentPanel.horarios[z] &&
-                        contentPanel.horarios[z].horario &&
-                        contentPanel.horarios[z].horario.length >= 5
-                      ) {
-                        if (
-                          contentPanel.horarios[z].horario.substring(0, 5).replace(':', 'h') ===
-                          localHora.hora.substring(0, 5).replace(':', 'h')
-                        ) {
-                          contentPanel.horarios[z].campus = localHora.campus;
-                          contentPanel.horarios[z].local = localHora.local;
-                        }
-                      }
+                    if (
+                      contentPanel.horarios[z].horario.substring(0, 5).replace(':', 'h') ===
+                      localHora.hora.substring(0, 5).replace(':', 'h')
+                    ) {
+                      contentPanel.horarios[z].campus = localHora.campus;
+                      contentPanel.horarios[z].local = localHora.local;
                     }
                   }
                 }
