@@ -26,7 +26,7 @@ import Programacao from './scenes/Programacao';
 import ProgramacaoCurso from './scenes/ProgramacaoCurso';
 import Checkin from './scenes/Checkin';
 import CheckinMinistrante from './scenes/CheckinMinistrante';
-import { modificaToken, modificaEmail } from './actions/AutenticacaoActions';
+import { modificaToken, modificaEmail, modificaLogin, modificaIsMinistrante } from './actions/AutenticacaoActions';
 import { alteraStatusConexao } from './actions/ConnectionActions';
 import { apagarPresencas, modificaPresencas } from './actions/CheckinActions';
 import { getItem, isArray } from './lib/Util';
@@ -36,6 +36,12 @@ class App extends Component {
   componentWillMount() {
     getItem('email').then((response) => {
       this.props.modificaEmail(response ? response.value : '');
+    });
+    getItem('login').then((response) => {
+      this.props.modificaLogin(response ? response.value : '');
+    });
+    getItem('isMinistrante').then((response) => {
+      this.props.modificaIsMinistrante(response ? response.value : '');
     });
     getItem('token').then((response) => {
       this.props.modificaToken(response && response.value !== null);
@@ -247,6 +253,8 @@ const mapStateToProps = state => (
 export default connect(mapStateToProps, {
   modificaToken,
   modificaEmail,
+  modificaLogin,
+  modificaIsMinistrante,
   alteraStatusConexao,
   apagarPresencas,
   modificaPresencas

@@ -1,7 +1,8 @@
 const INITIAL_STATE = {
   email: '',
+  login: '',
   hasToken: false,
-  isMinistrante: true
+  isMinistrante: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -17,6 +18,13 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         email: action.payload
+      };
+    }
+    
+    case 'modifica_login': {
+      return {
+        ...state,
+        login: action.payload
       };
     }
 

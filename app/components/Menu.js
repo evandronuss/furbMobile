@@ -9,7 +9,12 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import ItemMenu from './ItemMenu';
 import { removeItem } from '../lib/Util';
-import { modificaToken, modificaEmail } from '../actions/AutenticacaoActions';
+import {
+  modificaToken,
+  modificaEmail,
+  modificaLogin,
+  modificaIsMinistrante
+} from '../actions/AutenticacaoActions';
 
 const LogoFurb = require('../images/logo-furb.png');
 
@@ -18,8 +23,12 @@ class Menu extends Component {
     removeItem('programacaoCursoUsuario');
     removeItem('programacaoUsuario');
     removeItem('email');
+    removeItem('login');
+    removeItem('isMinistrante');
     removeItem('token');
     this.props.modificaToken(false);
+    this.props.modificaLogin('');
+    this.props.modificaIsMinistrante(false);
     this.props.modificaEmail('');
   }
 
@@ -41,7 +50,7 @@ class Menu extends Component {
             text='Check-in'
             onPress={this.props.isMinistrante ? Actions.checkinMinistrante : Actions.checkin}
           />}
-          {this.props.hasToken && <ItemMenu
+          {this.props.hasToken && !this.props.isMinistrante && <ItemMenu
             icon='settings'
             text='Minhas Oficinas'
             onPress={() => Actions.programacao({ filtrarPorUsuario: true })}
@@ -99,4 +108,9 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps, { modificaToken, modificaEmail })(Menu);
+export default connect(mapStateToProps, {
+  modificaToken,
+  modificaEmail,
+  modificaLogin,
+  modificaIsMinistrante
+})(Menu);
