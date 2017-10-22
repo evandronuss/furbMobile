@@ -30,3 +30,4 @@ npm install react-native-camera --save
 react-native link react-native-camera
 npm install react-native-qrcode-scanner --save
 react-native link react-native-qrcode-scanner
+npm install --save react-native-transformable-image@latest
