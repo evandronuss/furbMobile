@@ -34,7 +34,7 @@ class CheckinMinistrante extends Component {
   
   componentWillMount() {
     if (this.props.isConnected) {
-      axios.get(`${URL_API}Checkin/GetCursosOficinas`)
+      axios.get(`${URL_API}Checkin/GetCursosOficinas/${this.props.email}`)
         .then(response => this.carregarInformacoesOnline(response))
         .catch(() => this.carregarInformacoesOffline());
     } else {
