@@ -50,6 +50,11 @@ class Menu extends Component {
             text='Check-in'
             onPress={this.props.isMinistrante ? Actions.checkinMinistrante : Actions.checkin}
           />}
+          {this.props.hasToken && this.props.isMinistrante && <ItemMenu
+            icon='assignment-ind'
+            text='Inscritos por Oficina'
+            onPress={Actions.inscritosOficinas}
+          />}
           {this.props.hasToken && !this.props.isMinistrante && <ItemMenu
             icon='settings'
             text='Minhas Oficinas'

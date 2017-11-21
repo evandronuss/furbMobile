@@ -26,7 +26,13 @@ import Programacao from './scenes/Programacao';
 import ProgramacaoCurso from './scenes/ProgramacaoCurso';
 import Checkin from './scenes/Checkin';
 import CheckinMinistrante from './scenes/CheckinMinistrante';
-import { modificaToken, modificaEmail, modificaLogin, modificaIsMinistrante } from './actions/AutenticacaoActions';
+import Inscritos from './scenes/Inscritos';
+import {
+  modificaToken,
+  modificaEmail,
+  modificaLogin,
+  modificaIsMinistrante
+} from './actions/AutenticacaoActions';
 import { alteraStatusConexao } from './actions/ConnectionActions';
 import { apagarPresencas, modificaPresencas } from './actions/CheckinActions';
 import { getItem, isArray } from './lib/Util';
@@ -225,6 +231,12 @@ class App extends Component {
               key='checkinMinistrante'
               component={CheckinMinistrante}
               title='Check-in'
+              onEnter={this.closeDrawer.bind(this)}
+            />
+            <Scene
+              key='inscritosOficinas'
+              component={Inscritos}
+              title='Inscritos por Oficinas'
               onEnter={this.closeDrawer.bind(this)}
             />
           </Scene>
